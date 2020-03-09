@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorChallenger">#FFFBBD66</color>
+    <color name="colorGrandMaster">#FFDF4D4D</color>
+    <color name="colorMaster">#FF7E50A1</color>
+    <color name="colorDiamond">#FF03A9F4</color>
+    <color name="colorPlatinum">#FF22D8A6</color>
+    <color name="colorGold">#FFFFB503</color>
+    <color name="colorSilver">#FFABB5B8</color>
+    <color name="colorBronze">#FF8E4B2D</color>
+    <color name="colorIron">#5F5757</color>
+    <color name="colorUnRank">#A1000000</color>
+    <color name="colorRedTeam">#F44336</color>
+    <color name="colorBlueTeam">#2196F3</color>
+    <color name="coloPick">#696969</color>
+</resources>

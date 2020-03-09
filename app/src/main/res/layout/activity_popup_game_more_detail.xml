@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_game"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="3dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardView_game_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/custom_team_cardview_backgroud">
+
+            <TextView
+                android:id="@+id/game_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="밴픽 1"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/game_imageView0"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ahri" />
+
+            <ImageView
+                android:id="@+id/game_imageView1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="@+id/game_imageView0"
+                app:layout_constraintTop_toBottomOf="@+id/game_imageView0"
+                app:srcCompat="@drawable/ahri" />
+
+            <ImageView
+                android:id="@+id/game_imageView2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="@+id/game_imageView1"
+                app:layout_constraintTop_toBottomOf="@+id/game_imageView1"
+                app:srcCompat="@drawable/ahri" />
+
+            <ImageView
+                android:id="@+id/game_imageView3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="@+id/game_imageView2"
+                app:layout_constraintTop_toBottomOf="@+id/game_imageView2"
+                app:srcCompat="@drawable/ahri" />
+
+            <ImageView
+                android:id="@+id/game_imageView4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/game_imageView3"
+                app:layout_constraintTop_toBottomOf="@+id/game_imageView3"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/ahri" />
+
+            <ImageView
+                android:id="@+id/game_imageView5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ahri" />
+
+            <ImageView
+                android:id="@+id/game_imageView6"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="@+id/game_imageView5"
+                app:layout_constraintTop_toBottomOf="@+id/game_imageView5"
+                app:srcCompat="@drawable/ahri" />
+
+            <ImageView
+                android:id="@+id/game_imageView7"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="@+id/game_imageView6"
+                app:layout_constraintTop_toBottomOf="@+id/game_imageView6"
+                app:srcCompat="@drawable/ahri" />
+
+            <ImageView
+                android:id="@+id/game_imageView8"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="@+id/game_imageView7"
+                app:layout_constraintTop_toBottomOf="@+id/game_imageView7"
+                app:srcCompat="@drawable/ahri" />
+
+            <ImageView
+                android:id="@+id/game_imageView9"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="@+id/game_imageView8"
+                app:layout_constraintTop_toBottomOf="@+id/game_imageView8"
+                app:srcCompat="@drawable/ahri" />
+
+            <ImageView
+                android:id="@+id/game_imageView10"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintStart_toEndOf="@+id/game_imageView1"
+                app:layout_constraintTop_toBottomOf="@+id/game_title"
+                app:srcCompat="@drawable/ahri" />
+
+            <ImageView
+                android:id="@+id/game_imageView11"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="3dp"
+                app:layout_constraintStart_toEndOf="@+id/game_imageView10"
+                app:layout_constraintTop_toTopOf="@+id/game_imageView10"
+                app:srcCompat="@drawable/ahri" />
+
+            <ImageView
+                android:id="@+id/game_imageView12"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="3dp"
+                app:layout_constraintStart_toEndOf="@+id/game_imageView11"
+                app:layout_constraintTop_toTopOf="@+id/game_imageView11"
+                app:srcCompat="@drawable/ahri" />
+
+            <ImageView
+                android:id="@+id/game_imageView13"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintEnd_toStartOf="@+id/game_imageView14"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/game_imageView10"
+                app:layout_constraintTop_toBottomOf="@+id/game_imageView11"
+                app:srcCompat="@drawable/ahri" />
+
+            <ImageView
+                android:id="@+id/game_imageView14"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintEnd_toEndOf="@+id/game_imageView12"
+                app:layout_constraintStart_toEndOf="@id/game_imageView13"
+                app:layout_constraintTop_toTopOf="@+id/game_imageView13"
+                app:srcCompat="@drawable/ahri" />
+
+            <ImageView
+                android:id="@+id/game_imageView15"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="3dp"
+                app:layout_constraintEnd_toStartOf="@+id/game_imageView16"
+                app:layout_constraintTop_toBottomOf="@+id/game_title"
+                app:srcCompat="@drawable/ahri" />
+
+            <ImageView
+                android:id="@+id/game_imageView16"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="3dp"
+                app:layout_constraintEnd_toStartOf="@+id/game_imageView17"
+                app:layout_constraintTop_toTopOf="@+id/game_imageView15"
+                app:srcCompat="@drawable/ahri" />
+
+            <ImageView
+                android:id="@+id/game_imageView17"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/game_imageView6"
+                app:layout_constraintTop_toTopOf="@+id/game_imageView16"
+                app:srcCompat="@drawable/ahri" />
+
+            <ImageView
+                android:id="@+id/game_imageView18"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintEnd_toStartOf="@+id/game_imageView19"
+                app:layout_constraintStart_toStartOf="@+id/game_imageView15"
+                app:layout_constraintTop_toBottomOf="@+id/game_imageView15"
+                app:srcCompat="@drawable/ahri" />
+
+            <ImageView
+                android:id="@+id/game_imageView19"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintEnd_toEndOf="@+id/game_imageView17"
+                app:layout_constraintStart_toEndOf="@id/game_imageView18"
+                app:layout_constraintTop_toBottomOf="@+id/game_imageView15"
+                app:srcCompat="@drawable/ahri" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
+
+
+

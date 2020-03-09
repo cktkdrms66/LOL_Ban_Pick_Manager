@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialog_layout_tear0"
+    android:layout_width="350dp"
+    android:layout_height="100dp"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dialog_layout_tear1"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:background="#ffffff">
+
+        <ImageView
+            android:id="@+id/dialog_tear0"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/dialog_tear1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/circle" />
+
+        <ImageView
+            android:id="@+id/dialog_tear1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintEnd_toStartOf="@id/dialog_tear2"
+            app:layout_constraintStart_toEndOf="@+id/dialog_tear0"
+            app:layout_constraintTop_toTopOf="@+id/dialog_tear0"
+            android:src="@drawable/circle" />
+
+        <ImageView
+            android:id="@+id/dialog_tear2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintEnd_toStartOf="@id/dialog_tear3"
+            app:layout_constraintStart_toEndOf="@+id/dialog_tear1"
+            app:layout_constraintTop_toTopOf="@+id/dialog_tear1"
+            android:src="@drawable/circle" />
+
+        <ImageView
+            android:id="@+id/dialog_tear3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dialog_tear2"
+            app:layout_constraintTop_toTopOf="@+id/dialog_tear2"
+            android:src="@drawable/circle" />
+
+        <TextView
+            android:id="@+id/dialog_tear_text0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/dialog_tear0"
+            app:layout_constraintEnd_toEndOf="@+id/dialog_tear0"
+            app:layout_constraintStart_toStartOf="@+id/dialog_tear0"
+            app:layout_constraintTop_toTopOf="@+id/dialog_tear0" />
+
+        <TextView
+            android:id="@+id/dialog_tear_text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/dialog_tear1"
+            app:layout_constraintEnd_toEndOf="@+id/dialog_tear1"
+            app:layout_constraintStart_toStartOf="@+id/dialog_tear1"
+            app:layout_constraintTop_toTopOf="@+id/dialog_tear1" />
+
+        <TextView
+            android:id="@+id/dialog_tear_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/dialog_tear2"
+            app:layout_constraintEnd_toEndOf="@+id/dialog_tear2"
+            app:layout_constraintStart_toStartOf="@+id/dialog_tear2"
+            app:layout_constraintTop_toTopOf="@+id/dialog_tear2" />
+
+        <TextView
+            android:id="@+id/dialog_tear_text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/dialog_tear3"
+            app:layout_constraintEnd_toEndOf="@+id/dialog_tear3"
+            app:layout_constraintStart_toStartOf="@+id/dialog_tear3"
+            app:layout_constraintTop_toTopOf="@+id/dialog_tear3" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

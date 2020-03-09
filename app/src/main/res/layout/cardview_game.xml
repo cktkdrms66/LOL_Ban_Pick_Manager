@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_game"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="3dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardView_game_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/custom_team_cardview_backgroud">
+
+            <TextView
+                android:id="@+id/game_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:gravity="center"
+                android:text="밴픽 1"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/game_back"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/custom_team_cardview_backgroud"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/game_plus"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/nothing"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/game_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="승리"
+                android:textColor="#2196F3"
+                android:textSize="15dp"
+                app:layout_constraintEnd_toEndOf="@+id/game_logo"
+                app:layout_constraintStart_toStartOf="@+id/game_logo"
+                app:layout_constraintTop_toBottomOf="@+id/game_logo" />
+
+            <ImageView
+                android:id="@+id/game_logo"
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:src="@drawable/aphelios"
+                app:layout_constraintBottom_toBottomOf="@+id/game_back"
+                app:layout_constraintEnd_toEndOf="@+id/game_back"
+                app:layout_constraintStart_toStartOf="@+id/game_back"
+                app:layout_constraintTop_toTopOf="@+id/game_back" />
+
+            <ImageView
+                android:id="@+id/game_star0"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_marginEnd="2dp"
+                android:foregroundGravity="center"
+                android:src="@drawable/star"
+                app:layout_constraintBottom_toBottomOf="@+id/game_star1"
+                app:layout_constraintEnd_toStartOf="@+id/game_star1" />
+
+            <ImageView
+                android:id="@+id/game_star1"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_marginEnd="2dp"
+                android:foregroundGravity="center"
+                android:src="@drawable/star"
+                app:layout_constraintBottom_toBottomOf="@+id/game_star2"
+                app:layout_constraintEnd_toStartOf="@+id/game_star2" />
+
+            <ImageView
+                android:id="@+id/game_star2"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_marginEnd="2dp"
+                android:foregroundGravity="center"
+                android:src="@drawable/star"
+                app:layout_constraintBottom_toBottomOf="@+id/game_star3"
+                app:layout_constraintEnd_toStartOf="@+id/game_star3" />
+
+            <ImageView
+                android:id="@+id/game_star3"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_marginEnd="2dp"
+                android:foregroundGravity="center"
+                android:src="@drawable/star"
+                app:layout_constraintBottom_toBottomOf="@+id/game_star4"
+                app:layout_constraintEnd_toStartOf="@+id/game_star4" />
+
+            <ImageView
+                android:id="@+id/game_star4"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="11dp"
+                android:foregroundGravity="center"
+                android:src="@drawable/star"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
+
+
+

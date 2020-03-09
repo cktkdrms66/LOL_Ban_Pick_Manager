@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout4"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <!-- 타이틀바 -->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/game_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <ImageView
+        android:id="@+id/game_imageView_ok"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="16dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/checkicon"
+        app:layout_constraintBottom_toTopOf="@+id/game_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/game_imgaeView_more"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/game_imageView_ok"
+        app:layout_constraintEnd_toStartOf="@+id/game_imageView_ok"
+        app:layout_constraintTop_toTopOf="@+id/game_imageView_ok"
+        app:srcCompat="@drawable/searchicon" />
+
+    <TextView
+        android:id="@+id/game_textView_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:background="#00FFFFFF"
+        android:gravity="center"
+        android:text="밴픽 게임 선택"
+        android:textColor="#000000"
+        android:textSize="35dp"
+        app:layout_constraintBottom_toTopOf="@+id/game_guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/game_recyclerView_games"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/game_guideline" />
+
+    <!-- //end 타이틀바 -->
+
+    <!-- Notice -->
+
+    <!-- Notice -->
+
+    <!-- 닫기 버튼 -->
+    <!--// 닫기 버튼 -->
+</androidx.constraintlayout.widget.ConstraintLayout>
