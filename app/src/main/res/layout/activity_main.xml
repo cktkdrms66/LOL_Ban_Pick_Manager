@@ -13,6 +13,26 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.1" />
 
+    <com.google.android.gms.ads.AdView
+
+        android:id="@+id/main_adView"
+
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentBottom="true"
+
+        android:layout_centerHorizontal="true"
+
+        app:adSize="BANNER"
+
+        app:adUnitId="@string/banner_ad_unit_id_for_test"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_AD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></com.google.android.gms.ads.AdView>
+
     <FrameLayout
         android:id="@+id/framelayout"
         android:layout_width="match_parent"
@@ -48,7 +68,6 @@
         android:layout_height="30dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/guideline_AD"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/no" />

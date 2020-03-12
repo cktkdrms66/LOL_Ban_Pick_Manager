@@ -33,6 +33,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -43,6 +49,7 @@ public class BanPickActivity extends AppCompatActivity {
 
 
     //뷰 변수들
+    private AdView mAdView;
     RecyclerView recyclerView;
     TextView textView_team0_name;
     TextView textView_team1_name;
@@ -58,7 +65,6 @@ public class BanPickActivity extends AppCompatActivity {
     TextView[] textView_team1_tears = new TextView[5];
     ImageView[][] imageView_team0_mosts = new ImageView[5][3];
     ImageView[][] imageView_team1_mosts = new ImageView[5][3];
-    ImageView[] imageView_position = new ImageView[5];
     ImageView imageView_menu;
     TextView textView_prev;
     TextView textView_next;
@@ -97,6 +103,20 @@ public class BanPickActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_banpick);
 
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+
+            }
+        });
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        // 광고가 제대로 로드 되는지 테스트 하기 위한 코드입니다.
+        AdView adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
         //초기화
         isPicked = false;
         isLast = false;
@@ -116,7 +136,7 @@ public class BanPickActivity extends AppCompatActivity {
 
 
         //매치 객체 만들기 및 매치 저장하기
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         matchIndex = intent.getExtras().getInt("matchIndex");
         match = ApplicationClass.matches.get(matchIndex);
         team0 = match.team0;
@@ -125,7 +145,6 @@ public class BanPickActivity extends AppCompatActivity {
 
         //게임 객체 만들기
         gameIndex = intent.getExtras().getInt("gameIndex");
-        System.out.println(gameIndex);
         if(gameIndex == 0){
             game = new Match.Game();
         }else{
@@ -244,13 +263,6 @@ public class BanPickActivity extends AppCompatActivity {
         textView_team1_pick_backs[3] = findViewById(R.id.banpick_textView_back8);
         textView_team1_pick_backs[4] = findViewById(R.id.banpick_textView_back9);
 
-
-        imageView_position[0] = findViewById(R.id.banpick_imageView_top);
-        imageView_position[1] = findViewById(R.id.banpick_imageView_jg);
-        imageView_position[2] = findViewById(R.id.banpick_imageView_mid);
-        imageView_position[3] = findViewById(R.id.banpick_imageView_bot);
-        imageView_position[4] = findViewById(R.id.banpick_imageView_sup);
-
         imageView_menu = findViewById(R.id.banpick_imageView_menu);
         textView_prev = findViewById(R.id.banpick_textView_left);
         textView_next = findViewById(R.id.banpick_textView_right);
@@ -263,6 +275,61 @@ public class BanPickActivity extends AppCompatActivity {
         //상단 팀 이름 설정
         textView_team0_name.setText(team0.name);
         textView_team1_name.setText(team1.name);
+        //팀 이름 누르면 팀 디테일로 이동
+        textView_team0_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(getApplicationContext(), TeamDetailActivity.class);
+                intent1.putExtra("teamIndex", team0.id);
+                intent1.putExtra("isOktoModify", 0);
+                startActivity(intent1);
+                
+            }
+        });
+        textView_team1_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(getApplicationContext(), TeamDetailActivity.class);
+                intent1.putExtra("teamIndex", team1.id);
+                intent1.putExtra("isOktoModify", 0);
+                startActivity(intent1);
+
+            }
+        });
+        //각 플레이어 누르면 플레이어 디테일로 이동
+        for(int i = 0; i < 5; i++){
+            textView_team0_pick_backs[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int index = ApplicationClass.findIndexInImageView(view, textView_team0_pick_backs);
+                    if(team0.players[index].id == 1){
+                        return;
+                    }
+                    Intent intent1 = new Intent(getApplicationContext(), PlayerDetailActivity.class);
+                    intent1.putExtra("playerIndex", team0.players[index].id);
+                    intent1.putExtra("isOktoModify", 0);
+                    intent1.putExtra("where", 0);
+                    startActivity(intent1);
+                }
+            });
+            textView_team1_pick_backs[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int index = ApplicationClass.findIndexInImageView(view, textView_team1_pick_backs);
+                    if(team1.players[index].id == 1){
+                        return;
+                    }
+                    Intent intent1 = new Intent(getApplicationContext(), PlayerDetailActivity.class);
+                    intent1.putExtra("playerIndex", team1.players[index]);
+                    intent1.putExtra("isOktoModify", 0);
+                    intent1.putExtra("where", 0);
+                    startActivity(intent1);
+                }
+            });
+        }
+
+        
+        
         //벤픽 초기 설정
         if(match.isTeam0Blue == true){
             textView_team0_ban_backs[0].setBackgroundResource(R.drawable.custom_ban_backgroud_now);
@@ -329,6 +396,7 @@ public class BanPickActivity extends AppCompatActivity {
             }
         });
 
+        //서치
         imageView_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -338,6 +406,7 @@ public class BanPickActivity extends AppCompatActivity {
                 Intent intent1 = new Intent(getApplicationContext(), SelectChampionActivity.class);
                 intent1.putExtra("where", 2);
                 intent1.putExtra("matchIndex", matchIndex);
+                intent1.putExtra("mIsPicked", adapter.mIsPicked);
                 int[] championIndexes = new int[game.gameElements.size()-1];
                 for(int i = 0; i < championIndexes.length; i++){
                     championIndexes[i] = ((Match.PickClass)game.gameElements.get(i)).championIndex;
@@ -346,6 +415,7 @@ public class BanPickActivity extends AppCompatActivity {
                 startActivityForResult(intent1, 1);
             }
         });
+
 
 
 
@@ -422,14 +492,13 @@ public class BanPickActivity extends AppCompatActivity {
                 int star = data.getExtras().getInt("star");
                 String gameName = data.getExtras().getString("gameName");
                 int victoryType = data.getExtras().getInt("victoryType");
-                Bitmap image;
+                String image;
                 if(team0.type != 1 && victoryType == 0){
-                    image = ApplicationClass.StringToBitmap(match.team0.logo);
+                    image = match.team0.logo;
                 }else if(team1.type != 1 && victoryType == 1){
-                    image = ApplicationClass.StringToBitmap(match.team1.logo);
+                    image = match.team1.logo;
                 }else{
-                    Drawable drawable = getResources().getDrawable(R.drawable.no);
-                    image = ((BitmapDrawable)drawable).getBitmap();
+                    image = null;
                 }
                 Match.Game newGame = new Match.Game();
                 newGame.setGame(gameName, image, star, game.gameElements);
@@ -439,7 +508,6 @@ public class BanPickActivity extends AppCompatActivity {
         }else if(requestCode == 1){
             if(resultCode == RESULT_OK){
                 int pos = data.getExtras().getInt("championIndex");
-                System.out.println(pos);
                 if(pos != -1){
                     if(isLast){
                         return;
@@ -578,7 +646,6 @@ public class BanPickActivity extends AppCompatActivity {
     }
     public void setImage(int pickIndex){
         Match.PickClass nowPick = (Match.PickClass) pickSerial.get(pickIndex);
-        System.out.println(nowPick.championIndex + " champIndex");
         int image = Champion.getChampionImage(nowPick.championIndex);
         if(nowPick.type == 0){
             if(nowPick.isOurTeam){
@@ -960,8 +1027,8 @@ public class BanPickActivity extends AppCompatActivity {
         //픽이 바뀌지 않고, 스왑이 바뀌었을때
         if(swapPhaseClass.isSwapChange()){
             for(int i = 0; i < 5; i++){
-                imageView_team0_picks[i].setImageBitmap(swapPhaseClass.bitmapsNew0[i]);
-                imageView_team1_picks[i].setImageBitmap(swapPhaseClass.bitmapsNew1[i]);
+                imageView_team0_picks[i].setImageBitmap(ApplicationClass.StringToBitmap(swapPhaseClass.bitmapsNew0[i]));
+                imageView_team1_picks[i].setImageBitmap(ApplicationClass.StringToBitmap(swapPhaseClass.bitmapsNew1[i]));
             }
         }else{
             ApplicationClass.showToast(getApplicationContext(),"더 이상 진행할 수 없습니다.");
@@ -970,8 +1037,8 @@ public class BanPickActivity extends AppCompatActivity {
     }
     public void swapReturn(){
         for(int i = 0; i < 5; i++){
-            imageView_team0_picks[i].setImageBitmap(swapPhaseClass.bitmapsOld0[i]);
-            imageView_team1_picks[i].setImageBitmap(swapPhaseClass.bitmapsOld1[i]);
+            imageView_team0_picks[i].setImageBitmap(ApplicationClass.StringToBitmap(swapPhaseClass.bitmapsOld0[i]));
+            imageView_team1_picks[i].setImageBitmap(ApplicationClass.StringToBitmap(swapPhaseClass.bitmapsOld1[i]));
 
         }
     }
@@ -979,13 +1046,13 @@ public class BanPickActivity extends AppCompatActivity {
     public void setSwapBitMap(){
         for(int i = 0; i < 5; i++){
             swapPhaseClass.bitmapsOld0[i] =
-                    ((BitmapDrawable)imageView_team0_picks[i].getDrawable()).getBitmap();
+                    ApplicationClass.BitmapToString(((BitmapDrawable)imageView_team0_picks[i].getDrawable()).getBitmap());
             swapPhaseClass.bitmapsOld1[i] =
-                    ((BitmapDrawable)imageView_team1_picks[i].getDrawable()).getBitmap();
+                    ApplicationClass.BitmapToString(((BitmapDrawable)imageView_team1_picks[i].getDrawable()).getBitmap());
             swapPhaseClass.bitmapsNew0[i] =
-                    ((BitmapDrawable)imageView_team0_picks[i].getDrawable()).getBitmap();
+                    ApplicationClass.BitmapToString(((BitmapDrawable)imageView_team0_picks[i].getDrawable()).getBitmap());
             swapPhaseClass.bitmapsNew1[i] =
-                    ((BitmapDrawable)imageView_team1_picks[i].getDrawable()).getBitmap();
+                    ApplicationClass.BitmapToString(((BitmapDrawable)imageView_team1_picks[i].getDrawable()).getBitmap());
 
 
         }
@@ -1118,11 +1185,11 @@ public class BanPickActivity extends AppCompatActivity {
         imageView0.setImageBitmap(bitmap1);
         imageView1.setImageBitmap(bitmap0);
         if(isOurTeam){
-            swapPhaseClass.bitmapsNew0[i] = bitmap1;
-            swapPhaseClass.bitmapsNew0[j] = bitmap0;
+            swapPhaseClass.bitmapsNew0[i] = ApplicationClass.BitmapToString(bitmap1);
+            swapPhaseClass.bitmapsNew0[j] = ApplicationClass.BitmapToString(bitmap0);
         }else{
-            swapPhaseClass.bitmapsNew1[i] = bitmap1;
-            swapPhaseClass.bitmapsNew1[j] = bitmap0;
+            swapPhaseClass.bitmapsNew1[i] = ApplicationClass.BitmapToString(bitmap1);
+            swapPhaseClass.bitmapsNew1[j] = ApplicationClass.BitmapToString(bitmap0);
         }
 
     }

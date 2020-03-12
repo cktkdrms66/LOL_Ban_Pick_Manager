@@ -19,6 +19,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.InputStream;
@@ -33,6 +34,9 @@ public class PopupMakeTeamActivity extends AppCompatActivity {
     int[] playerIndexes = new int[5];
     int playerIndexForChange;
     InputMethodManager imm;
+    ChampionAdapter adapter;
+    
+    static int selectIndex;
 
     EditText editText_teamName;
     ImageView imageView_teamLogo;
@@ -150,7 +154,6 @@ public class PopupMakeTeamActivity extends AppCompatActivity {
                                         players[j] = ApplicationClass.players.get(playerIndexes[j]);
                                     }
                                 }
-                                most = new ArrayList<>();
                                 Team.makeTeam(teamName, teamLogo, players, most);
                                 Intent intent = new Intent();
                                 intent.putExtra("isMake", 1);
@@ -168,13 +171,90 @@ public class PopupMakeTeamActivity extends AppCompatActivity {
             }
         });
 
+        //리사이클러뷰 설정 , 이 팀의 핵심 챔피언
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        most = new ArrayList<>();
+        most.add(Champion.makePlus());
+        adapter = new ChampionAdapter(this, most);
+        recyclerView.setAdapter(adapter);
+
+        //플러스 클릭 시, 챔피언 선택으로 이동.
+        adapter.setOnItemClickListener(new ChampionAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int pos, ImageView imageView) {
+                if(most.get(pos).isChampion ==false){
+                    //플러스 클릭 시, 챔피언 선택으로 이동
+                    Intent intent1 = new Intent(getApplicationContext(), SelectChampionActivity.class);
+                    intent1.putExtra("where", 3);
+                    intent1.putExtra("champions", most);
+                    intent1.putExtra("playerIndexs", playerIndexes);
+                    startActivityForResult(intent1, 2);
+                } else{
+                    if(adapter.getIsClicked(pos) == false){
+                        //선택했을 때
+                        if(adapter.getmOnlyItemPosition() == -1){
+                            //최초 선택 시 해당 색을 검게 칠한다.
+                            adapter.setIsClicked(pos, true);
+                            adapter.mOnlyItemPosition = pos;
+                            adapter.notifyDataSetChanged();
+                        }else{
+                            //이미 다른 선택된 애가 있다면 그 친구와 체인지
+                            Champion champion = Champion.getChampion(most.get(pos).name);
+                            most.set(pos, Champion.getChampion(most.get(adapter.getmOnlyItemPosition()).name));
+                            most.set(adapter.getmOnlyItemPosition(), Champion.getChampion(champion.name));
+                            adapter.setIsClicked(adapter.mOnlyItemPosition, false);
+                            adapter.mOnlyItemPosition = -1;
+                            adapter.notifyDataSetChanged();
+                        }
+                    }else{
+                        //이미 선택된 애 누르면 선택을 풀자.
+                        adapter.setIsClicked(pos, false);
+                        adapter.mOnlyItemPosition = -1;
+                        adapter.notifyDataSetChanged();
+                    }
+
+                }
+
+            }
+        });
+
+        //길게 누르면 삭제
+        adapter.setOnLongClickListener(new ChampionAdapter.OnLongClickListener() {
+            @Override
+            public void onLongClick(View view, int pos) {
+                if(most.get(pos).isChampion ==false){
+                    //플러스는 삭제 못함
+                    return;
+                }
+                selectIndex = pos;
+                new androidx.appcompat.app.AlertDialog.Builder(PopupMakeTeamActivity.this).setMessage("삭제하시겠습니까?")
+                        .setPositiveButton("네", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                most.remove(selectIndex);
+                                adapter.mIsClicked.remove(selectIndex);
+                                adapter.mIsPicked.remove(selectIndex);
+                                adapter.notifyItemRemoved(selectIndex);
+                            }
+                        })
+                        .setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                return;
+                            }
+                        }).show();
+            }
+        });
+
+
 
 
 
 
     }
 
-    //다시 되돌아왔을때 0 사진첩에서 돌아왔을떄, 1 플레이어 선택에서 돌아왔을때
+    //다시 되돌아왔을때 0 사진첩에서 돌아왔을떄, 1 플레이어 선택에서 돌아왔을때 2 챔피언 선택에서 돌아왔을때
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -220,6 +300,19 @@ public class PopupMakeTeamActivity extends AppCompatActivity {
                     playerIndexes[playerIndexForChange] = playerIndex;
 
                 }
+
+            }
+        }else if(requestCode == 2){
+            //챔피언 선택에서 돌아왔을 때
+            if(resultCode == RESULT_OK){
+                int championIndex = data.getExtras().getInt("championIndex");
+                if(championIndex == -1){
+                    return;
+                }
+                most.add(most.size()-1, Champion.getChampion(championIndex));
+                adapter.mIsClicked.add(false);
+                adapter.mIsPicked.add(false);
+                adapter.notifyItemInserted(most.size()-2);
 
             }
         }

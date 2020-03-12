@@ -40,9 +40,7 @@ public class FragmentPlayerActivity extends Fragment {
         imageView_setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for(int i = 0; i < ApplicationClass.players.size(); i++){
-                    System.out.println(ApplicationClass.players.get(i).name + " using " + ApplicationClass.players.get(i).using + ", type "+ApplicationClass.players.get(i).type );
-                }
+                ApplicationClass.dialogHelp0Player(getActivity());
             }
         });
 
@@ -127,7 +125,6 @@ public class FragmentPlayerActivity extends Fragment {
             }
         }else if(requestCode == 1){
             if(resultCode == -1){
-                System.out.println("추가");
                 Boolean isChange = data.getExtras().getBoolean("isChange");
                 if(isChange){
                     adapter.notifyItemInserted(ApplicationClass.players.size()-1);

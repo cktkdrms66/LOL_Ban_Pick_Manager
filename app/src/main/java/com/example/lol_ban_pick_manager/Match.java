@@ -73,7 +73,7 @@ public class Match  {
 
     public static class Game{
         String name;
-        Bitmap victoryTeamLogo;
+        String victoryTeamLogo;
         int type;// 0 == 플러스,  1 == 그냥 게임
         int star = 0;
         ArrayList<GameElement> gameElements = new ArrayList<>();
@@ -85,7 +85,7 @@ public class Match  {
             victoryTeamLogo = null;
 
         }
-        public void setGame(String name, Bitmap victoryTeamLogo, int star, ArrayList<GameElement> elements){
+        public void setGame(String name, String victoryTeamLogo, int star, ArrayList<GameElement> elements){
             type = 1;
             this.name = name;
             this.victoryTeamLogo = victoryTeamLogo;
@@ -132,10 +132,10 @@ public class Match  {
     }
 
     public static class SwapPhaseClass extends GameElement{
-        Bitmap[] bitmapsOld0 = new Bitmap[5];
-        Bitmap[] bitmapsOld1 = new Bitmap[5];
-        Bitmap[] bitmapsNew0 = new Bitmap[5];
-        Bitmap[] bitmapsNew1 = new Bitmap[5];
+        String[] bitmapsOld0 = new String[5];
+        String[] bitmapsOld1 = new String[5];
+        String[] bitmapsNew0 = new String[5];
+        String[] bitmapsNew1 = new String[5];
 
         public SwapPhaseClass(int id){
             this.id = id;
@@ -143,10 +143,10 @@ public class Match  {
         }
         public boolean isSwapChange(){
             for(int i = 0; i < 5; i++){
-                if(bitmapsOld0[i] != bitmapsNew0[i]){
+                if(!bitmapsOld0[i].equals(bitmapsNew0[i])){
                     return true;
                 }
-                if(bitmapsOld1[i] != bitmapsNew1[i]){
+                if(!bitmapsOld1[i].equals(bitmapsNew1[i])){
                     return true;
                 }
             }

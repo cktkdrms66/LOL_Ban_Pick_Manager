@@ -11,8 +11,25 @@
         android:id="@+id/AD_layout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="vertical"></LinearLayout>
+        android:orientation="vertical">
 
+        <com.google.android.gms.ads.AdView
+
+            android:id="@+id/adView"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent"
+
+            android:layout_alignParentBottom="true"
+
+            android:layout_centerHorizontal="true"
+
+            app:adSize="BANNER"
+
+            app:adUnitId="@string/banner_ad_unit_id_for_test">
+        </com.google.android.gms.ads.AdView>
+    </LinearLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout0"
         android:layout_width="match_parent"
@@ -374,26 +391,24 @@
                 android:id="@+id/banpick_textView_tear3"
                 android:layout_width="33dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
                 android:gravity="center"
                 android:text="C"
                 android:textColor="#FFFFFF"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="@+id/banpick_textView_back3"
-                app:layout_constraintStart_toEndOf="@+id/banpick_imageView_pick3"
+                app:layout_constraintStart_toStartOf="@+id/banpick_textView_back3"
                 app:layout_constraintTop_toTopOf="@+id/banpick_textView_back3" />
 
             <TextView
                 android:id="@+id/banpick_textView_tear4"
                 android:layout_width="33dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
                 android:gravity="center"
                 android:text="P4"
                 android:textColor="#FFFFFF"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="@+id/banpick_textView_back4"
-                app:layout_constraintStart_toEndOf="@+id/banpick_imageView_pick4"
+                app:layout_constraintStart_toStartOf="@+id/banpick_textView_back4"
                 app:layout_constraintTop_toTopOf="@+id/banpick_textView_back4" />
 
             <TextView
@@ -419,7 +434,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="@+id/banpick_textView_back2"
-                app:layout_constraintStart_toEndOf="@+id/banpick_imageView_pick2"
+                app:layout_constraintStart_toStartOf="@+id/banpick_textView_back2"
                 app:layout_constraintTop_toTopOf="@+id/banpick_textView_back2" />
 
             <TextView
@@ -432,7 +447,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="@+id/banpick_textView_back1"
-                app:layout_constraintStart_toEndOf="@+id/banpick_imageView_pick1"
+                app:layout_constraintStart_toStartOf="@+id/banpick_textView_back1"
                 app:layout_constraintTop_toTopOf="@+id/banpick_textView_back1" />
 
             <ImageView
@@ -697,7 +712,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="@+id/banpick_textView_back6"
-                app:layout_constraintEnd_toStartOf="@+id/banpick_imageView_pick6"
+                app:layout_constraintEnd_toEndOf="@+id/banpick_textView_back6"
                 app:layout_constraintTop_toTopOf="@+id/banpick_textView_back6" />
 
             <TextView
@@ -710,7 +725,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="@+id/banpick_textView_back5"
-                app:layout_constraintEnd_toStartOf="@+id/banpick_imageView_pick5"
+                app:layout_constraintEnd_toEndOf="@+id/banpick_textView_back5"
                 app:layout_constraintTop_toTopOf="@+id/banpick_textView_back5" />
 
             <TextView
@@ -723,7 +738,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="@+id/banpick_textView_back9"
-                app:layout_constraintEnd_toStartOf="@+id/banpick_imageView_pick9"
+                app:layout_constraintEnd_toEndOf="@+id/banpick_textView_back9"
                 app:layout_constraintTop_toTopOf="@+id/banpick_textView_back9" />
 
             <TextView
@@ -736,7 +751,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="@+id/banpick_textView_back7"
-                app:layout_constraintEnd_toStartOf="@+id/banpick_imageView_pick7"
+                app:layout_constraintEnd_toEndOf="@+id/banpick_textView_back7"
                 app:layout_constraintTop_toTopOf="@+id/banpick_textView_back7" />
 
             <TextView
@@ -749,7 +764,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="@+id/banpick_textView_back8"
-                app:layout_constraintEnd_toStartOf="@+id/banpick_imageView_pick8"
+                app:layout_constraintEnd_toEndOf="@+id/banpick_textView_back8"
                 app:layout_constraintTop_toTopOf="@+id/banpick_textView_back8" />
 
             <ImageView
@@ -892,122 +907,90 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/banpick_imageView_top"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/position_top" />
-
-        <ImageView
-            android:id="@+id/banpick_imageView_jg"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@+id/banpick_imageView_top"
-            app:layout_constraintTop_toTopOf="@+id/banpick_imageView_top"
-            app:srcCompat="@drawable/position_jg" />
-
-        <ImageView
-            android:id="@+id/banpick_imageView_mid"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@+id/banpick_imageView_jg"
-            app:layout_constraintTop_toTopOf="@+id/banpick_imageView_jg"
-            app:srcCompat="@drawable/position_mid" />
-
-        <ImageView
-            android:id="@+id/banpick_imageView_bot"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@+id/banpick_imageView_mid"
-            app:layout_constraintTop_toTopOf="@+id/banpick_imageView_mid"
-            app:srcCompat="@drawable/position_bot" />
-
-        <ImageView
-            android:id="@+id/banpick_imageView_sup"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@+id/banpick_imageView_bot"
-            app:layout_constraintTop_toTopOf="@+id/banpick_imageView_bot"
-            app:srcCompat="@drawable/position_sup" />
-
-        <ImageView
-            android:id="@+id/banpick_imageView_searchicon"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/banpick_imageView_sup"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/banpick_imageView_sup"
-            app:srcCompat="@drawable/searchicon" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/banpick_recyclerView"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="10dp"
+            android:layout_gravity="top"
+            android:layout_margin="3dp"
+            android:layout_weight="10"
             android:background="#14000000"
-            app:layout_constraintBottom_toTopOf="@+id/banpick_imageView_menu"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/banpick_imageView_top" />
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            tools:layout_editor_absoluteX="6dp">
 
-        <TextView
-            android:id="@+id/banpick_textView_right"
-            android:layout_width="30dp"
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:gravity="center"
-            android:text="&gt;"
-            android:textColor="#000000"
-            android:textSize="25dp"
-            app:layout_constraintBottom_toBottomOf="@+id/banpick_textView_left"
-            app:layout_constraintStart_toEndOf="@+id/banpick_textView_left"
-            app:layout_constraintTop_toTopOf="@+id/banpick_textView_left" />
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <TextView
-            android:id="@+id/banpick_textView_left"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:gravity="center"
-            android:text="&lt;"
-            android:textColor="#000000"
-            android:textSize="25dp"
-            app:layout_constraintBottom_toBottomOf="@+id/banpick_imageView_menu"
-            app:layout_constraintStart_toEndOf="@+id/banpick_imageView_menu"
-            app:layout_constraintTop_toTopOf="@+id/banpick_imageView_menu" />
+            <ImageView
+                android:id="@+id/banpick_imageView_menu"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/menuicon" />
 
-        <ImageView
-            android:id="@+id/banpick_imageView_menu"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/menuicon" />
+            <TextView
+                android:id="@+id/banpick_textView_left"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:text="&lt;"
+                android:textColor="#000000"
+                android:textSize="25dp" />
 
-        <Button
-            android:id="@+id/banpick_button_pick"
-            android:layout_width="70dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/custom_button"
-            android:text="선택 완료"
-            app:layout_constraintBottom_toBottomOf="@+id/banpick_imageView_menu"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/banpick_imageView_menu" />
+            <TextView
+                android:id="@+id/banpick_textView_right"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="3dp"
+                android:gravity="center"
+                android:text="&gt;"
+                android:textColor="#000000"
+                android:textSize="25dp" />
+
+            <ImageView
+                android:id="@+id/banpick_imageView_searchicon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center|end"
+                android:layout_marginStart="8dp"
+                app:srcCompat="@drawable/searchicon" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/banpick_button_pick"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center|right"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/custom_button"
+                android:text="선택 완료" />
+        </LinearLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </LinearLayout>

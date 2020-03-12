@@ -19,14 +19,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ChampionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements Filterable {
 
     Context context;
     ArrayList<Champion> unFilteredList;
     ArrayList<Champion> filteredList;
+    ArrayList<Champion> resultList = new ArrayList<>();
+    ArrayList<Champion> positionFilteredList = new ArrayList<>();
     ArrayList<Boolean> mIsClicked = new ArrayList<>();
     ArrayList<Boolean> mIsPicked = new ArrayList<>();
+    ArrayList<Boolean> allMIsPicked = new ArrayList<>();
+    ArrayList<Boolean> resultIsPicked = new ArrayList<>();
+    ArrayList<Boolean> positionFilteredIsPicked = new ArrayList<>();
     int mOnlyItemPosition = -1;
     OnItemClickListener mListener = null;
     OnLongClickListener mLongListener = null;
@@ -55,6 +61,11 @@ public class ChampionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
     public void setOnLongClickListener(OnLongClickListener listener){
         this.mLongListener = listener;
+    }
+    public void setmIsPicked(ArrayList<Boolean>mIsPicked){
+        this.mIsPicked = mIsPicked;
+        allMIsPicked.addAll(mIsPicked);
+        notifyDataSetChanged();
     }
     public void setClickClear(boolean isReturn, boolean isNext, int championIndex){
         if(isReturn ==false){
@@ -164,7 +175,7 @@ public class ChampionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         ChampionViewHolder new_holder = (ChampionViewHolder) holder;
         new_holder.textView.setText(filteredList.get(position).name);
         new_holder.imageView.setImageResource(filteredList.get(position).image);
-        if(position < mIsClicked.size()){
+        if(position < mIsClicked.size() && mIsPicked.size() != 0){
             if(mIsPicked.get(position)){
                 new_holder.imageView.setColorFilter(Color.parseColor("#D81B60"), PorterDuff.Mode.DST);
                 new_holder.imageView.setColorFilter(Color.parseColor("#696969"), PorterDuff.Mode.MULTIPLY);
@@ -186,24 +197,145 @@ public class ChampionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
 
+    public void setTeamChampion(int position, int[] playerIndexs){
+        Team.Player[] players = new Team.Player[5];
+        for(int i = 0; i < 5; i++){
+            players[i] = ApplicationClass.players.get(playerIndexs[i]);
+        }
+
+        ArrayList<Champion> champions = new ArrayList<>();
+        if(position == -1){
+            return;
+        }else{
+            for(int i = 0; i < players[position].most.size(); i++){
+                champions.add(players[position].most.get(i));
+            }
+            filteredList = champions;
+            notifyDataSetChanged();
+
+        }
+
+    }
+
+    public void getAll(int where, String string, int position){
+        if(string.length() == 0){
+            filteredList = unFilteredList;
+            positionFilteredList.clear();
+            if(where == 2){
+                mIsPicked = allMIsPicked;
+            }
+        }else{
+            CharSequence charSequence = string;
+            positionFilteredList.clear();
+            getFilter().filter(charSequence);
+        }
+
+        notifyDataSetChanged();
+
+    }
+
+    public void getFilter(int position, int where, String string){
+        ArrayList<Champion> filteringList = new ArrayList<>();
+        ArrayList<Boolean> filteringMIsPicked = new ArrayList<>();
+        ArrayList<Champion> allList;
+        ArrayList<Boolean> allIsPicked;
+        positionFilteredList.clear();
+        positionFilteredIsPicked.clear();
+        int i = 0;
+        for(Champion champion : unFilteredList){
+            if(champion.position == position) {
+                positionFilteredList.add(champion);
+                if(where == 2){
+                    if(allMIsPicked.get(i)){
+                        positionFilteredIsPicked.add(true);
+                    }else{
+                        positionFilteredIsPicked.add(false);
+                    }
+                }
+            }
+            i++;
+        }
+        if(string.length() == 0){
+            allList = unFilteredList;
+            allIsPicked = allMIsPicked;
+        }else{
+            CharSequence charSequence = string;
+            getFilter().filter(charSequence);
+            allList = resultList;
+            allIsPicked = resultIsPicked;
+        }
+        i = 0;
+        for(Champion champion : allList){
+            if(champion.position == position){
+                filteringList.add(champion);
+                if(where == 2){
+                    if(allIsPicked.get(i)){
+                        filteringMIsPicked.add(true);
+                    }else{
+                        filteringMIsPicked.add(false);
+                    }
+                }
+
+            }
+            i++;
+        }
+        filteredList = filteringList;
+        mIsPicked = filteringMIsPicked;
+        notifyDataSetChanged();
+    }
+
+
+
     @Override
     public Filter getFilter() {
         return new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence charSequence) {
                 String charString = charSequence.toString();
+                ArrayList<Champion> allList;
+                ArrayList<Boolean> allIsPicked;
+                if(positionFilteredList.size() != 0){
+                    allList = positionFilteredList;
+                    allIsPicked = positionFilteredIsPicked;
+                }else{
+                    allList = unFilteredList;
+                    allIsPicked = allMIsPicked;
+                }
                 if(charString.isEmpty()) {
-                    filteredList = unFilteredList;
+                    filteredList = allList;
+                    mIsPicked = allIsPicked;
+                    resultList.clear();
+                    resultIsPicked.clear();
                 } else {
+                    ArrayList<Boolean> filtergingIsPicked = new ArrayList<>();
                     ArrayList<Champion> filteringList = new ArrayList<>();
-                    for(Champion champion : unFilteredList) {
+                    resultList.clear();
+                    resultIsPicked.clear();
+                    int i = 0;
+                    for(Champion champion : allList) {
                         String name = champion.name;
                         if(name.toLowerCase().contains(charString.toLowerCase())) {
                             filteringList.add(champion);
+                            resultList.add(champion);
+                            if(allIsPicked.size() != 0){
+                                if(allIsPicked.get(i)){
+                                    filtergingIsPicked.add(true);
+                                    resultIsPicked.add(true);
+                                }else{
+                                    filtergingIsPicked.add(false);
+                                    resultIsPicked.add(false);
+                                }
+                            }
                         }
+                        i++;
                     }
+                    mIsPicked = filtergingIsPicked;
                     filteredList = filteringList;
+
                 }
+
+
+
                 FilterResults filterResults = new FilterResults();
                 filterResults.values = filteredList;
                 return filterResults;
@@ -217,4 +349,6 @@ public class ChampionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         };
 
     }
+
+
 }

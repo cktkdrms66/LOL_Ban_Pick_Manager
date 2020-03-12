@@ -18,16 +18,22 @@ import java.util.ArrayList;
 public class GameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private ArrayList<Match.Game> mItems;
-    private ArrayList<Boolean> mIsClicked = new ArrayList<>();
+    ArrayList<Boolean> mIsClicked = new ArrayList<>();
     private int mOnlyItemPosition = -1;
     private OnItemClickListener mListener = null;
-
+    private OnLongClickListener mLongListener = null;
     public interface OnItemClickListener{
         void onItemClick(View v);
+    }
+    public interface OnLongClickListener{
+        void onLongClick(View v, int pos);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener){
         mListener = listener;
+    }
+    public void setOnLongClickListener(OnLongClickListener listener){
+        mLongListener = listener;
     }
 
     public void setOnlyClick(int pos, boolean isClick){
@@ -100,6 +106,17 @@ public class GameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     }
                 }
             });
+
+            view.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    int pos = getAdapterPosition();
+                    if(mLongListener != null){
+                        mLongListener.onLongClick(view, pos);
+                    }
+                    return true;
+                }
+            });
         }
     }
 
@@ -134,7 +151,7 @@ public class GameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         if(mItems.get(position).victoryTeamLogo == null){
             new_holder.imageView.setImageResource(R.drawable.no);
         }else{
-            new_holder.imageView.setImageBitmap(mItems.get(position).victoryTeamLogo);
+            new_holder.imageView.setImageBitmap(ApplicationClass.StringToBitmap(mItems.get(position).victoryTeamLogo));
         }
         int size = mItems.get(position).star;
         for(int i = 0; i < size; i++){

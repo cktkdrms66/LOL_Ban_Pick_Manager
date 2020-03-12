@@ -27,7 +27,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/player_textView_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/player_textView_title"
-        app:srcCompat="@drawable/settingicon" />
+        app:srcCompat="@drawable/helpmark" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/player_guideline"

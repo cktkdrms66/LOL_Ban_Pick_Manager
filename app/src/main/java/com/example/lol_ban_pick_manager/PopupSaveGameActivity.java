@@ -79,7 +79,7 @@ public class PopupSaveGameActivity extends AppCompatActivity {
                 imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
             }
         });
-        editText.setText("밴픽 " + (match.games.size() + 1));
+        editText.setText("밴픽 " + match.games.size());
         imageView_team_logo.setImageResource(R.drawable.no);
         imageViews[0].setImageResource(R.drawable.starlight);
 

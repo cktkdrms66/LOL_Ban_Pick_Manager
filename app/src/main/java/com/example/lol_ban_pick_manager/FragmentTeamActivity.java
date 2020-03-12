@@ -42,13 +42,7 @@ public class FragmentTeamActivity extends Fragment {
         imageView_setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for(int i = 0; i < ApplicationClass.teams.size(); i++){
-                    System.out.println("team "+ i );
-                    for(int j = 0; j < 5; j++){
-                        System.out.println(ApplicationClass.teams.get(i).players[j].name + "  " +ApplicationClass.teams.get(i).players[j].using);
-                    }
-                }
-
+                ApplicationClass.dialogHelp0Team(getActivity());
             }
         });
 

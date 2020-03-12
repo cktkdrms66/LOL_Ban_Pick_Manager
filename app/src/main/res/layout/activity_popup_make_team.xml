@@ -78,16 +78,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/make_team_recycler"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout17"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout17"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout17"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout17" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"
         android:layout_width="wrap_content"
@@ -102,7 +92,15 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/make_team_imageX"></LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/make_team_imageX">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/make_team_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#00FFFFFF" />
+    </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout18"

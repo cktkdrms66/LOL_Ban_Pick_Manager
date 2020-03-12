@@ -46,7 +46,7 @@ public class FragmentMatchActivity extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_match,container,false);
 
         imageView_setting = view.findViewById(R.id.match_imageView_setting);
@@ -56,12 +56,7 @@ public class FragmentMatchActivity extends Fragment {
         imageView_setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //todo
-                Paper.book().destroy();
-                Paper.book().write("totalPlayerNum", 0);
-                Paper.book().write("totalTeamNum", 0);
-                Paper.book().write("totalMatchNum", 0);
-
+                ApplicationClass.dialogHelp0Match(getActivity());
             }
         });
 

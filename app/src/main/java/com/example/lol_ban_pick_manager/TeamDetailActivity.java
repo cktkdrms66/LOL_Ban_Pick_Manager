@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +32,9 @@ public class TeamDetailActivity extends Activity {
 
     Team team;
     int teamIndex;
+    int isOktoModify;
+    int[] playerIndexes = new int[5];
+    ChampionAdapter adapter;
 
     static boolean change;
     static int selectIndex;
@@ -63,33 +68,148 @@ public class TeamDetailActivity extends Activity {
         textViews_tear[3] = findViewById(R.id.cardView_player_textView_tear3);
         textViews_tear[4] = findViewById(R.id.cardView_player_textView_tear4);
 
-
+        //수정가능한지 가져온다
         final Intent intent = getIntent();
+        isOktoModify = intent.getIntExtra("isOktoModify", 1);
+
+        //팀 정보를 가져온다
         teamIndex = intent.getExtras().getInt("teamIndex");
         team = ApplicationClass.teams.get(teamIndex);
 
+        //플레이어 인덱스를 넣는다
+        for(int i = 0 ; i < 5; i++){
+            playerIndexes[i] = team.players[i].id;
+        }
+
+        //팀 로고를 세팅한다
         if(team.logo == null){
             imageView_teamLogo.setImageResource(R.drawable.no);
         }else{
             imageView_teamLogo.setImageBitmap(ApplicationClass.StringToBitmap(team.logo));
         }
+        //팀 로고를 누르면 메뉴가 뜬다 바꿀 거냐 아니면 삭제할거냐
+        if(isOktoModify ==1){
+            imageView_teamLogo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    CharSequence[] charSequences = new CharSequence[]{"변경", "이미지 삭제"};
+                    new AlertDialog.Builder(TeamDetailActivity.this).setItems(charSequences, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            //이미지 변경 사진첩으로 이동
+                            if(i == 0){
+                                Intent intent = new Intent();
+                                intent.setType("image/*");
+                                intent.setAction(Intent.ACTION_GET_CONTENT);
+                                startActivityForResult(intent, 3);
+
+                            }else{
+                                //이미지 삭제
+                                imageView_teamLogo.setImageResource(R.drawable.no);
+                                team.logo = null;
+                                ApplicationClass.saveReTeam(teamIndex);
+                                change = true;
+                            }
+                        }
+                    }).show();
+                }
+            });
+        }
         textView_teamName.setText(team.name);
 
+        //플레이어들의 티어 색깔을 정한다
         for(int i = 0; i < 5; i++){
             imageViews_tear[i].setColorFilter(Team.tear_color(team.players[i].tear), PorterDuff.Mode.SRC_IN);
             textViews_tear[i].setText(team.players[i].tear);
         }
+
+        //핵심 챔피언 모스트들을 설정한다.
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        ChampionAdapter adapter = new ChampionAdapter(this, team.most);
-        recyclerView.setAdapter(adapter);
-        adapter.setOnItemClickListener(new ChampionAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int pos, ImageView imageView) {
-                return;
+        if(isOktoModify == 0){
+            ArrayList<Champion> champions = new ArrayList<>();
+            for(int i = 0; i < team.most.size() -1; i++){
+                champions.add(team.most.get(i));
             }
-        });
+            adapter = new ChampionAdapter(this, champions);
+        }else{
+            adapter = new ChampionAdapter(this, team.most);
+        }
+        recyclerView.setAdapter(adapter);
 
+        if(isOktoModify == 1){
+            //모스트 누를 시, 챔피언 선택으로 이동
+            adapter.setOnItemClickListener(new ChampionAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(int pos, ImageView imageView) {
+                    if(team.most.get(pos).isChampion ==false){
+                        //플러스 클릭 시, 챔피언 선택으로 이동
+                        Intent intent1 = new Intent(getApplicationContext(), SelectChampionActivity.class);
+                        intent1.putExtra("where", 3);
+                        intent1.putExtra("champions", team.most);
+                        intent1.putExtra("playerIndexs", playerIndexes);
+                        startActivityForResult(intent1, 2);
+                    } else{
+                        if(adapter.getIsClicked(pos) == false){
+                            //선택했을 때
+                            if(adapter.getmOnlyItemPosition() == -1){
+                                //최초 선택 시 해당 색을 검게 칠한다.
+                                adapter.setIsClicked(pos, true);
+                                adapter.mOnlyItemPosition = pos;
+                                adapter.notifyDataSetChanged();
+                            }else{
+                                //이미 다른 선택된 애가 있다면 그 친구와 체인지
+                                Champion champion = Champion.getChampion(team.most.get(pos).name);
+                                team.most.set(pos, Champion.getChampion(team.most.get(adapter.getmOnlyItemPosition()).name));
+                                team.most.set(adapter.getmOnlyItemPosition(), Champion.getChampion(champion.name));
+                                adapter.setIsClicked(adapter.mOnlyItemPosition, false);
+                                adapter.mOnlyItemPosition = -1;
+                                adapter.notifyDataSetChanged();
+                            }
+                        }else{
+                            //이미 선택된 애 누르면 선택을 풀자.
+                            adapter.setIsClicked(pos, false);
+                            adapter.mOnlyItemPosition = -1;
+                            adapter.notifyDataSetChanged();
+                        }
+
+                    }
+                }
+            });
+
+            //길게 누르면 삭제
+            adapter.setOnLongClickListener(new ChampionAdapter.OnLongClickListener() {
+                @Override
+                public void onLongClick(View view, int pos) {
+                    if(team.most.get(pos).isChampion ==false){
+                        //플러스는 삭제 못함
+                        return;
+                    }
+                    selectIndex = pos;
+                    new androidx.appcompat.app.AlertDialog.Builder(TeamDetailActivity.this).setMessage("삭제하시겠습니까?")
+                            .setPositiveButton("네", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    team.most.remove(selectIndex);
+                                    ApplicationClass.saveReTeam(teamIndex);
+                                    adapter.mIsClicked.remove(selectIndex);
+                                    adapter.mIsPicked.remove(selectIndex);
+                                    adapter.notifyItemRemoved(selectIndex);
+                                }
+                            })
+                            .setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    return;
+                                }
+                            }).show();
+                }
+            });
+        }
+
+        
+
+        //각 플레이어 클릭시 이벤트 설정
         for(int i = 0; i < 5; i++){
             if(team.players[i].most.size() == 0){
                 imageViews[i].setImageResource(R.drawable.randomchampion);
@@ -100,18 +220,19 @@ public class TeamDetailActivity extends Activity {
             imageViews[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int i = 0;
-                    ImageView nowView = (ImageView) view;
-                    for(ImageView imageView : imageViews){
-                        if(nowView == imageView){
-                            break;
+                    if(isOktoModify == 1){
+                        int i = 0;
+                        ImageView nowView = (ImageView) view;
+                        for(ImageView imageView : imageViews){
+                            if(nowView == imageView){
+                                break;
+                            }
+                            i++;
                         }
-                        i++;
+
+                        selectIndex = i;
+                        show();
                     }
-
-                    selectIndex = i;
-                    show();
-
                 }
             });
         }
@@ -145,6 +266,7 @@ public class TeamDetailActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == 0){
+            //플레이어 디테일에서 되돌아왔을떄
             if(resultCode == RESULT_OK){
                 Boolean isChange = data.getExtras().getBoolean("isChange");
                 if(isChange){
@@ -165,6 +287,7 @@ public class TeamDetailActivity extends Activity {
                 }
             }
         }else if(requestCode == 1){
+            //플레이어선택에서 되돌아왔을떄
             if(resultCode == RESULT_OK){
                 int playerIndex = data.getExtras().getInt("playerIndex");
                 if(playerIndex == -1 || playerIndex == 1){
@@ -192,8 +315,42 @@ public class TeamDetailActivity extends Activity {
                 team.players[selectIndex].using++;
                 ApplicationClass.saveRePlayer(team.players[selectIndex]);
                 ApplicationClass.saveReTeam(team);
+                playerIndexes[selectIndex] = playerIndex;
                 change = true;
 
+            }
+        }else if(requestCode == 2){
+            //챔피언 선택에서 돌아왔을 때
+            if(resultCode == RESULT_OK){
+                int championIndex = data.getExtras().getInt("championIndex");
+                if(championIndex == -1){
+                    return;
+                }
+                team.most.add(team.most.size()-1, Champion.getChampion(championIndex));
+                adapter.mIsClicked.add(false);
+                adapter.mIsPicked.add(false);
+                adapter.notifyItemInserted(team.most.size()-2);
+                ApplicationClass.saveReTeam(team);
+                change = true;
+
+            }
+        }else if(requestCode == 3){
+            //3 사진첩에서 돌아왔을 때
+            if(resultCode == RESULT_OK){
+                try {
+                    // 선택한 이미지에서 비트맵 생성
+                    InputStream in = getContentResolver().openInputStream(data.getData());
+                    Bitmap img = BitmapFactory.decodeStream(in);
+                    in.close();
+                    // 이미지 표시
+                    imageView_teamLogo.setImageBitmap(img);
+                    team.logo = ApplicationClass.BitmapToString(img);
+                    ApplicationClass.saveReTeam(teamIndex);
+                    change = true;
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
