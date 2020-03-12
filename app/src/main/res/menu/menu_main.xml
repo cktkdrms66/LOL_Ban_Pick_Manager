@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/item_match"
-        android:icon="@drawable/ic_action_name"
+        android:icon="@drawable/ic_match"
         android:title="매치" />
     <item
         android:id="@+id/item_team"

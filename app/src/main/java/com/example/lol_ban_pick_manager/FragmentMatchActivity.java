@@ -86,6 +86,9 @@ public class FragmentMatchActivity extends Fragment {
             @Override
             public void onLongClick(View v, int pos) {
                 posIndex = pos;
+                if(posIndex == 0){
+                    return;
+                }
                 new AlertDialog.Builder(getContext()).setMessage("삭제하시겠습니까?")
                         .setPositiveButton("네", new DialogInterface.OnClickListener() {
                             @Override

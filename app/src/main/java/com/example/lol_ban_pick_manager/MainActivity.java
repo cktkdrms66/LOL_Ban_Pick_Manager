@@ -1,10 +1,12 @@
 package com.example.lol_ban_pick_manager;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -90,5 +92,29 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         }
+    }
+
+    boolean isFinish = false;
+    @Override
+    public void onBackPressed() {
+        if(isFinish){
+            super.onBackPressed();
+        }else{
+            new AlertDialog.Builder(this).setMessage("앱을 종료하시겠습니까?")
+                    .setPositiveButton("네", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            isFinish = true;
+                            onBackPressed();
+                        }
+                    })
+                    .setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            return;
+                        }
+                    }).show();
+        }
+
     }
 }
