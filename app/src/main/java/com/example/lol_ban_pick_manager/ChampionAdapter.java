@@ -1,7 +1,6 @@
 package com.example.lol_ban_pick_manager;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
@@ -13,13 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.ConcurrentHashMap;
+
 
 public class ChampionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements Filterable {
 
@@ -114,7 +110,7 @@ public class ChampionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             imageView = view.findViewById(R.id.cardView_champion_image);
             textView = view.findViewById(R.id.cardView_champion_name);
 
-            view.setOnClickListener(new View.OnClickListener() {
+            imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int pos = getAdapterPosition();

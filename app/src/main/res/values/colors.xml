@@ -16,4 +16,5 @@
     <color name="colorRedTeam">#F44336</color>
     <color name="colorBlueTeam">#2196F3</color>
     <color name="coloPick">#696969</color>
+    <color name="intro">#FF8080FF</color>
 </resources>

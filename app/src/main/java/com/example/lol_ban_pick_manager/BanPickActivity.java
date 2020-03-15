@@ -1,55 +1,40 @@
 package com.example.lol_ban_pick_manager;
 
-import android.content.Context;
+
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TabHost;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class BanPickActivity extends AppCompatActivity {
 
-
     //뷰 변수들
-    private AdView mAdView;
     RecyclerView recyclerView;
     TextView textView_team0_name;
     TextView textView_team1_name;
@@ -95,28 +80,17 @@ public class BanPickActivity extends AppCompatActivity {
     Team team1;
     Match.SwapPhaseClass swapPhaseClass;
 
-   
 
-    
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_banpick);
 
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
 
-            }
-        });
 
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-        // 광고가 제대로 로드 되는지 테스트 하기 위한 코드입니다.
-        AdView adView = new AdView(this);
-        adView.setAdSize(AdSize.BANNER);
-        adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
+
+
         //초기화
         isPicked = false;
         isLast = false;
@@ -320,7 +294,7 @@ public class BanPickActivity extends AppCompatActivity {
                         return;
                     }
                     Intent intent1 = new Intent(getApplicationContext(), PlayerDetailActivity.class);
-                    intent1.putExtra("playerIndex", team1.players[index]);
+                    intent1.putExtra("playerIndex", team1.players[index].id);
                     intent1.putExtra("isOktoModify", 0);
                     intent1.putExtra("where", 0);
                     startActivity(intent1);
@@ -492,16 +466,28 @@ public class BanPickActivity extends AppCompatActivity {
                 int star = data.getExtras().getInt("star");
                 String gameName = data.getExtras().getString("gameName");
                 int victoryType = data.getExtras().getInt("victoryType");
-                String image;
+                int teamIndex;
+                int teamColor;
                 if(team0.type != 1 && victoryType == 0){
-                    image = match.team0.logo;
+                    teamIndex = team0.id;
+                    if(match.isTeam0Blue){
+                        teamColor = 0;
+                    }else{
+                        teamColor = 1;
+                    }
                 }else if(team1.type != 1 && victoryType == 1){
-                    image = match.team1.logo;
+                    teamIndex = team1.id;
+                    if(match.isTeam0Blue){
+                        teamColor = 1;
+                    }else{
+                        teamColor = 0;
+                    }
                 }else{
-                    image = null;
+                    teamIndex = 0;
+                    teamColor = 2;
                 }
                 Match.Game newGame = new Match.Game();
-                newGame.setGame(gameName, image, star, game.gameElements);
+                newGame.setGame(gameName, teamIndex, teamColor, star, game.gameElements);
                 ApplicationClass.addGame(matchIndex, newGame);
                 ApplicationClass.showToast(getApplicationContext(), "저장이 완료되었습니다.");
             }
@@ -622,6 +608,7 @@ public class BanPickActivity extends AppCompatActivity {
     //초기 세팅 메소드
 
     public void setMostColor(boolean isLightOn, int image){
+
         if(image == -1){
             return;
         }
@@ -746,7 +733,6 @@ public class BanPickActivity extends AppCompatActivity {
     }
 
     public void settingTeamArr(boolean isDefaultPosition){
-
         if(pickSerial.size() > 0){
             swapPhaseClass = (Match.SwapPhaseClass)pickSerial.get(pickSerial.size()-1);
             return;

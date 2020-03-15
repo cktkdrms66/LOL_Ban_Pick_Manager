@@ -12,15 +12,13 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
-import java.util.Locale;
+
 
 public class SelectChampionActivity extends Activity {
     ImageView imageView_search;
@@ -173,6 +171,12 @@ public class SelectChampionActivity extends Activity {
             adapter.setmIsPicked(mIsPicked);
         }
 
+        recyclerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imm.hideSoftInputFromWindow(editText_search.getWindowToken(), 0);
+            }
+        });
         adapter.setOnItemClickListener(new ChampionAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int pos, ImageView imageView) {
@@ -203,6 +207,7 @@ public class SelectChampionActivity extends Activity {
                 Intent intent = new Intent();
                 intent.putExtra("championIndex", index);
                 setResult(RESULT_OK, intent);
+                imm.hideSoftInputFromWindow(editText_search.getWindowToken(), 0);
                 finish();
             }
         });

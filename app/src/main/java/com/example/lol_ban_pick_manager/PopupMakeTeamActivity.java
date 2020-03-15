@@ -1,6 +1,5 @@
 package com.example.lol_ban_pick_manager;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;

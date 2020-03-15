@@ -5,31 +5,9 @@
     android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/AD_layout"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="vertical">
-
-        <com.google.android.gms.ads.AdView
-
-            android:id="@+id/adView"
-
-            android:layout_width="match_parent"
-
-            android:layout_height="match_parent"
-
-            android:layout_alignParentBottom="true"
-
-            android:layout_centerHorizontal="true"
-
-            app:adSize="BANNER"
-
-            app:adUnitId="@string/banner_ad_unit_id_for_test">
-        </com.google.android.gms.ads.AdView>
-    </LinearLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout0"
         android:layout_width="match_parent"
@@ -39,9 +17,7 @@
             android:id="@+id/banpick_textView_ban_back0"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_marginStart="2dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="3dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/custom_team_cardview_backgroud"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -54,37 +30,37 @@
             android:id="@+id/banpick_textView_ban_back1"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_marginEnd="3dp"
             android:background="@drawable/custom_team_cardview_backgroud"
             app:layout_constraintBottom_toBottomOf="@+id/banpick_textView_ban_back0"
-            app:layout_constraintEnd_toStartOf="@id/banpick_textView_ban_back2" />
+            app:layout_constraintEnd_toStartOf="@id/banpick_textView_ban_back2"
+            app:layout_constraintStart_toEndOf="@id/banpick_textView_ban_back0" />
 
         <TextView
             android:id="@+id/banpick_textView_ban_back2"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_marginEnd="3dp"
             android:background="@drawable/custom_team_cardview_backgroud"
             app:layout_constraintBottom_toBottomOf="@+id/banpick_textView_ban_back1"
-            app:layout_constraintEnd_toStartOf="@id/banpick_textView_ban_back3" />
+            app:layout_constraintEnd_toStartOf="@id/banpick_textView_ban_back3"
+            app:layout_constraintStart_toEndOf="@id/banpick_textView_ban_back1" />
 
         <TextView
             android:id="@+id/banpick_textView_ban_back3"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_marginEnd="3dp"
             android:background="@drawable/custom_team_cardview_backgroud"
             app:layout_constraintBottom_toBottomOf="@+id/banpick_textView_ban_back2"
-            app:layout_constraintEnd_toStartOf="@id/banpick_textView_ban_back4" />
+            app:layout_constraintEnd_toStartOf="@id/banpick_textView_ban_back4"
+            app:layout_constraintStart_toEndOf="@id/banpick_textView_ban_back2" />
 
         <TextView
             android:id="@+id/banpick_textView_ban_back4"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_marginEnd="5dp"
             android:background="@drawable/custom_team_cardview_backgroud"
             app:layout_constraintBottom_toBottomOf="@+id/banpick_textView_ban_back3"
-            app:layout_constraintEnd_toStartOf="@+id/banpick_guideline" />
+            app:layout_constraintEnd_toStartOf="@+id/banpick_guideline"
+            app:layout_constraintStart_toEndOf="@id/banpick_textView_ban_back3" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/banpick_guideline"
@@ -97,9 +73,7 @@
             android:id="@+id/banpick_textView_ban_back5"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_marginStart="3dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="2dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/custom_team_cardview_backgroud"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -112,8 +86,8 @@
             android:id="@+id/banpick_textView_ban_back6"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_marginStart="3dp"
             android:background="@drawable/custom_team_cardview_backgroud"
+            app:layout_constraintEnd_toStartOf="@id/banpick_textView_ban_back5"
             app:layout_constraintStart_toEndOf="@+id/banpick_textView_ban_back7"
             app:layout_constraintTop_toTopOf="@+id/banpick_textView_ban_back5" />
 
@@ -121,8 +95,8 @@
             android:id="@+id/banpick_textView_ban_back7"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_marginStart="3dp"
             android:background="@drawable/custom_team_cardview_backgroud"
+            app:layout_constraintEnd_toStartOf="@id/banpick_textView_ban_back6"
             app:layout_constraintStart_toEndOf="@+id/banpick_textView_ban_back8"
             app:layout_constraintTop_toTopOf="@+id/banpick_textView_ban_back6" />
 
@@ -130,8 +104,8 @@
             android:id="@+id/banpick_textView_ban_back8"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_marginStart="3dp"
             android:background="@drawable/custom_team_cardview_backgroud"
+            app:layout_constraintEnd_toStartOf="@id/banpick_textView_ban_back7"
             app:layout_constraintStart_toEndOf="@+id/banpick_textView_ban_back9"
             app:layout_constraintTop_toTopOf="@+id/banpick_textView_ban_back7" />
 
@@ -139,8 +113,8 @@
             android:id="@+id/banpick_textView_ban_back9"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_marginStart="5dp"
             android:background="@drawable/custom_team_cardview_backgroud"
+            app:layout_constraintEnd_toStartOf="@id/banpick_textView_ban_back8"
             app:layout_constraintStart_toStartOf="@+id/banpick_guideline"
             app:layout_constraintTop_toTopOf="@+id/banpick_textView_ban_back8" />
 
@@ -149,6 +123,7 @@
             android:layout_width="160sp"
             android:layout_height="40sp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:background="@color/colorBlueTeam"
             android:gravity="center|center_vertical"
             android:text="블루팀"
@@ -161,6 +136,7 @@
             android:id="@+id/banpick_textView_team1_name"
             android:layout_width="160sp"
             android:layout_height="40sp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:background="@color/colorRedTeam"
             android:gravity="center|center_vertical"
@@ -283,77 +259,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <ImageView
-                android:id="@+id/banpick_imageView_pick3"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@+id/banpick_imageView_pick1"
-                app:layout_constraintTop_toBottomOf="@+id/banpick_imageView_pick2"
-                app:srcCompat="@drawable/normal_team_logo" />
-
-            <ImageView
-                android:id="@+id/banpick_imageView_pick2"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@+id/banpick_imageView_pick1"
-                app:layout_constraintTop_toBottomOf="@+id/banpick_imageView_pick1"
-                app:srcCompat="@drawable/normal_team_logo" />
-
-            <ImageView
-                android:id="@+id/banpick_imageView_pick0"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/normal_team_logo" />
-
-            <ImageView
-                android:id="@+id/banpick_imageView_pick1"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@+id/banpick_imageView_pick0"
-                app:layout_constraintTop_toBottomOf="@+id/banpick_imageView_pick0"
-                app:srcCompat="@drawable/normal_team_logo" />
-
-            <ImageView
-                android:id="@+id/banpick_imageView_pick4"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@+id/banpick_imageView_pick1"
-                app:layout_constraintTop_toBottomOf="@+id/banpick_imageView_pick3"
-                app:srcCompat="@drawable/normal_team_logo" />
-
-            <TextView
-                android:id="@+id/banpick_textView_back1"
-                android:layout_width="135dp"
-                android:layout_height="36dp"
-                android:layout_marginEnd="5dp"
-                android:background="@drawable/custom_pick_backgroud"
-                app:layout_constraintBottom_toBottomOf="@+id/banpick_imageView_pick1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/banpick_imageView_pick1"
-                app:layout_constraintTop_toTopOf="@+id/banpick_imageView_pick1" />
-
-            <TextView
-                android:id="@+id/banpick_textView_back3"
-                android:layout_width="135dp"
-                android:layout_height="36dp"
-                android:layout_marginEnd="5dp"
-                android:background="@drawable/custom_pick_backgroud"
-                app:layout_constraintBottom_toBottomOf="@+id/banpick_imageView_pick3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/banpick_imageView_pick3"
-                app:layout_constraintTop_toTopOf="@+id/banpick_imageView_pick3" />
-
             <TextView
                 android:id="@+id/banpick_textView_back4"
-                android:layout_width="135dp"
+                android:layout_width="0dp"
                 android:layout_height="36dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="7dp"
@@ -365,20 +273,19 @@
                 app:layout_constraintVertical_bias="1.0" />
 
             <TextView
-                android:id="@+id/banpick_textView_back0"
-                android:layout_width="135dp"
+                android:id="@+id/banpick_textView_back1"
+                android:layout_width="0dp"
                 android:layout_height="36dp"
                 android:layout_marginEnd="5dp"
                 android:background="@drawable/custom_pick_backgroud"
-                app:layout_constraintBottom_toBottomOf="@+id/banpick_imageView_pick0"
+                app:layout_constraintBottom_toBottomOf="@+id/banpick_imageView_pick1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/banpick_imageView_pick0"
-                app:layout_constraintTop_toTopOf="@+id/banpick_imageView_pick0"
-                app:layout_constraintVertical_bias="0.571" />
+                app:layout_constraintStart_toEndOf="@+id/banpick_imageView_pick1"
+                app:layout_constraintTop_toTopOf="@+id/banpick_imageView_pick1" />
 
             <TextView
                 android:id="@+id/banpick_textView_back2"
-                android:layout_width="135dp"
+                android:layout_width="0dp"
                 android:layout_height="36dp"
                 android:layout_marginEnd="5dp"
                 android:background="@drawable/custom_pick_backgroud"
@@ -386,6 +293,79 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/banpick_imageView_pick2"
                 app:layout_constraintTop_toTopOf="@+id/banpick_imageView_pick2" />
+
+            <TextView
+                android:id="@+id/banpick_textView_back0"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/custom_pick_backgroud"
+                app:layout_constraintBottom_toBottomOf="@+id/banpick_imageView_pick0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/banpick_imageView_pick0"
+                app:layout_constraintTop_toTopOf="@+id/banpick_imageView_pick0" />
+
+            <TextView
+                android:id="@+id/banpick_textView_back3"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/custom_pick_backgroud"
+                app:layout_constraintBottom_toBottomOf="@+id/banpick_imageView_pick3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/banpick_imageView_pick3"
+                app:layout_constraintTop_toTopOf="@+id/banpick_imageView_pick3" />
+
+            <ImageView
+                android:id="@+id/banpick_imageView_pick3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="3dp"
+                app:layout_constraintBottom_toTopOf="@id/banpick_imageView_pick4"
+                app:layout_constraintStart_toStartOf="@+id/banpick_imageView_pick1"
+                app:layout_constraintTop_toBottomOf="@+id/banpick_imageView_pick2"
+                app:srcCompat="@drawable/normal_team_logo" />
+
+            <ImageView
+                android:id="@+id/banpick_imageView_pick2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="3dp"
+                app:layout_constraintBottom_toTopOf="@id/banpick_imageView_pick3"
+                app:layout_constraintStart_toStartOf="@+id/banpick_imageView_pick1"
+                app:layout_constraintTop_toBottomOf="@+id/banpick_imageView_pick1"
+                app:srcCompat="@drawable/normal_team_logo" />
+
+            <ImageView
+                android:id="@+id/banpick_imageView_pick0"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="3dp"
+                app:layout_constraintBottom_toTopOf="@id/banpick_imageView_pick1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/normal_team_logo" />
+
+            <ImageView
+                android:id="@+id/banpick_imageView_pick1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="3dp"
+                app:layout_constraintBottom_toTopOf="@id/banpick_imageView_pick2"
+                app:layout_constraintStart_toStartOf="@+id/banpick_imageView_pick0"
+                app:layout_constraintTop_toBottomOf="@+id/banpick_imageView_pick0"
+                app:srcCompat="@drawable/normal_team_logo" />
+
+            <ImageView
+                android:id="@+id/banpick_imageView_pick4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="3dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/banpick_imageView_pick1"
+                app:layout_constraintTop_toBottomOf="@+id/banpick_imageView_pick3"
+                app:srcCompat="@drawable/normal_team_logo" />
 
             <TextView
                 android:id="@+id/banpick_textView_tear3"
@@ -454,7 +434,7 @@
                 android:id="@+id/banpick_imageView_mostpick22"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginStart="3dp"
+                app:layout_constraintEnd_toEndOf="@+id/banpick_textView_back2"
                 app:layout_constraintStart_toEndOf="@+id/banpick_imageView_mostpick21"
                 app:layout_constraintTop_toTopOf="@+id/banpick_imageView_mostpick21"
                 app:srcCompat="@drawable/normal_team_logo" />
@@ -463,7 +443,7 @@
                 android:id="@+id/banpick_imageView_mostpick20"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginStart="3dp"
+                app:layout_constraintEnd_toStartOf="@id/banpick_imageView_mostpick21"
                 app:layout_constraintStart_toEndOf="@+id/banpick_textView_tear2"
                 app:layout_constraintTop_toTopOf="@+id/banpick_textView_tear2"
                 app:srcCompat="@drawable/normal_team_logo" />
@@ -474,6 +454,7 @@
                 android:layout_height="27dp"
                 android:layout_marginStart="3dp"
                 app:layout_constraintBottom_toBottomOf="@+id/banpick_textView_back0"
+                app:layout_constraintEnd_toStartOf="@id/banpick_imageView_mostpick01"
                 app:layout_constraintStart_toEndOf="@+id/banpick_textView_tear0"
                 app:layout_constraintTop_toTopOf="@+id/banpick_textView_back0"
                 app:srcCompat="@drawable/normal_team_logo" />
@@ -484,6 +465,7 @@
                 android:layout_height="27dp"
                 android:layout_marginStart="3dp"
                 app:layout_constraintBottom_toBottomOf="@+id/banpick_textView_back1"
+                app:layout_constraintEnd_toStartOf="@id/banpick_imageView_mostpick11"
                 app:layout_constraintStart_toEndOf="@+id/banpick_textView_tear1"
                 app:layout_constraintTop_toTopOf="@+id/banpick_textView_back1"
                 app:srcCompat="@drawable/normal_team_logo" />
@@ -494,6 +476,7 @@
                 android:layout_height="27dp"
                 android:layout_marginStart="3dp"
                 app:layout_constraintBottom_toBottomOf="@+id/banpick_textView_back0"
+                app:layout_constraintEnd_toEndOf="@+id/banpick_textView_back0"
                 app:layout_constraintStart_toEndOf="@+id/banpick_imageView_mostpick01"
                 app:layout_constraintTop_toTopOf="@+id/banpick_textView_back0"
                 app:srcCompat="@drawable/normal_team_logo" />
@@ -504,6 +487,7 @@
                 android:layout_height="27dp"
                 android:layout_marginStart="3dp"
                 app:layout_constraintBottom_toBottomOf="@+id/banpick_textView_back1"
+                app:layout_constraintEnd_toEndOf="@+id/banpick_textView_back1"
                 app:layout_constraintStart_toEndOf="@+id/banpick_imageView_mostpick11"
                 app:layout_constraintTop_toTopOf="@+id/banpick_textView_back1"
                 app:srcCompat="@drawable/normal_team_logo" />
@@ -512,7 +496,7 @@
                 android:id="@+id/banpick_imageView_mostpick31"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginStart="3dp"
+                app:layout_constraintEnd_toStartOf="@id/banpick_imageView_mostpick32"
                 app:layout_constraintStart_toEndOf="@+id/banpick_imageView_mostpick30"
                 app:layout_constraintTop_toTopOf="@id/banpick_imageView_mostpick30"
                 app:srcCompat="@drawable/normal_team_logo" />
@@ -521,7 +505,7 @@
                 android:id="@+id/banpick_imageView_mostpick41"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginStart="3dp"
+                app:layout_constraintEnd_toStartOf="@id/banpick_imageView_mostpick42"
                 app:layout_constraintStart_toEndOf="@+id/banpick_imageView_mostpick40"
                 app:layout_constraintTop_toTopOf="@+id/banpick_imageView_mostpick40"
                 app:srcCompat="@drawable/normal_team_logo" />
@@ -532,6 +516,7 @@
                 android:layout_height="27dp"
                 android:layout_marginStart="3dp"
                 app:layout_constraintBottom_toBottomOf="@+id/banpick_textView_back0"
+                app:layout_constraintEnd_toStartOf="@id/banpick_imageView_mostpick02"
                 app:layout_constraintStart_toEndOf="@+id/banpick_imageView_mostpick00"
                 app:layout_constraintTop_toTopOf="@+id/banpick_textView_back0"
                 app:srcCompat="@drawable/normal_team_logo" />
@@ -540,7 +525,7 @@
                 android:id="@+id/banpick_imageView_mostpick32"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginStart="3dp"
+                app:layout_constraintEnd_toEndOf="@+id/banpick_textView_back3"
                 app:layout_constraintStart_toEndOf="@+id/banpick_imageView_mostpick31"
                 app:layout_constraintTop_toTopOf="@+id/banpick_imageView_mostpick31"
                 app:srcCompat="@drawable/normal_team_logo" />
@@ -551,6 +536,7 @@
                 android:layout_height="27dp"
                 android:layout_marginStart="3dp"
                 app:layout_constraintBottom_toBottomOf="@+id/banpick_textView_back1"
+                app:layout_constraintEnd_toStartOf="@id/banpick_imageView_mostpick12"
                 app:layout_constraintStart_toEndOf="@+id/banpick_imageView_mostpick10"
                 app:layout_constraintTop_toTopOf="@+id/banpick_textView_back1"
                 app:srcCompat="@drawable/normal_team_logo" />
@@ -559,7 +545,7 @@
                 android:id="@+id/banpick_imageView_mostpick40"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginStart="3dp"
+                app:layout_constraintEnd_toStartOf="@id/banpick_imageView_mostpick41"
                 app:layout_constraintStart_toEndOf="@+id/banpick_textView_tear4"
                 app:layout_constraintTop_toTopOf="@+id/banpick_textView_tear4"
                 app:srcCompat="@drawable/normal_team_logo" />
@@ -568,7 +554,7 @@
                 android:id="@+id/banpick_imageView_mostpick42"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginStart="3dp"
+                app:layout_constraintEnd_toEndOf="@+id/banpick_textView_back4"
                 app:layout_constraintStart_toEndOf="@+id/banpick_imageView_mostpick41"
                 app:layout_constraintTop_toTopOf="@+id/banpick_imageView_mostpick41"
                 app:srcCompat="@drawable/normal_team_logo" />
@@ -577,7 +563,7 @@
                 android:id="@+id/banpick_imageView_mostpick30"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginStart="3dp"
+                app:layout_constraintEnd_toStartOf="@id/banpick_imageView_mostpick31"
                 app:layout_constraintStart_toEndOf="@+id/banpick_textView_tear3"
                 app:layout_constraintTop_toTopOf="@+id/banpick_textView_tear3"
                 app:srcCompat="@drawable/normal_team_logo" />
@@ -586,7 +572,7 @@
                 android:id="@+id/banpick_imageView_mostpick21"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginStart="3dp"
+                app:layout_constraintEnd_toStartOf="@id/banpick_imageView_mostpick22"
                 app:layout_constraintStart_toEndOf="@+id/banpick_imageView_mostpick20"
                 app:layout_constraintTop_toTopOf="@+id/banpick_imageView_mostpick20"
                 app:srcCompat="@drawable/normal_team_logo" />
@@ -597,59 +583,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <ImageView
-                android:id="@+id/banpick_imageView_pick8"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/banpick_imageView_pick7"
-                app:srcCompat="@drawable/normal_team_logo" />
-
-            <ImageView
-                android:id="@+id/banpick_imageView_pick5"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/normal_team_logo" />
-
-            <ImageView
-                android:id="@+id/banpick_imageView_pick6"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/banpick_imageView_pick5"
-                app:srcCompat="@drawable/normal_team_logo" />
-
-            <ImageView
-                android:id="@+id/banpick_imageView_pick9"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/banpick_imageView_pick8"
-                app:srcCompat="@drawable/normal_team_logo" />
-
-            <ImageView
-                android:id="@+id/banpick_imageView_pick7"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/banpick_imageView_pick6"
-                app:srcCompat="@drawable/normal_team_logo" />
-
             <TextView
                 android:id="@+id/banpick_textView_back5"
-                android:layout_width="135dp"
+                android:layout_width="0dp"
                 android:layout_height="36dp"
                 android:layout_marginStart="5dp"
                 android:background="@drawable/custom_pick_backgroud"
@@ -659,30 +595,8 @@
                 app:layout_constraintTop_toTopOf="@+id/banpick_imageView_pick5" />
 
             <TextView
-                android:id="@+id/banpick_textView_back8"
-                android:layout_width="135dp"
-                android:layout_height="36dp"
-                android:layout_marginStart="5dp"
-                android:background="@drawable/custom_pick_backgroud"
-                app:layout_constraintBottom_toBottomOf="@+id/banpick_imageView_pick8"
-                app:layout_constraintEnd_toStartOf="@+id/banpick_imageView_pick8"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/banpick_imageView_pick8" />
-
-            <TextView
-                android:id="@+id/banpick_textView_back9"
-                android:layout_width="135dp"
-                android:layout_height="36dp"
-                android:layout_marginStart="5dp"
-                android:background="@drawable/custom_pick_backgroud"
-                app:layout_constraintBottom_toBottomOf="@+id/banpick_imageView_pick9"
-                app:layout_constraintEnd_toStartOf="@+id/banpick_imageView_pick9"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/banpick_imageView_pick9" />
-
-            <TextView
                 android:id="@+id/banpick_textView_back7"
-                android:layout_width="135dp"
+                android:layout_width="0dp"
                 android:layout_height="36dp"
                 android:layout_marginStart="5dp"
                 android:background="@drawable/custom_pick_backgroud"
@@ -692,8 +606,30 @@
                 app:layout_constraintTop_toTopOf="@+id/banpick_imageView_pick7" />
 
             <TextView
+                android:id="@+id/banpick_textView_back9"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/custom_pick_backgroud"
+                app:layout_constraintBottom_toBottomOf="@+id/banpick_imageView_pick9"
+                app:layout_constraintEnd_toStartOf="@+id/banpick_imageView_pick9"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/banpick_imageView_pick9" />
+
+            <TextView
+                android:id="@+id/banpick_textView_back8"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/custom_pick_backgroud"
+                app:layout_constraintBottom_toBottomOf="@+id/banpick_imageView_pick8"
+                app:layout_constraintEnd_toStartOf="@+id/banpick_imageView_pick8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/banpick_imageView_pick8" />
+
+            <TextView
                 android:id="@+id/banpick_textView_back6"
-                android:layout_width="135dp"
+                android:layout_width="0dp"
                 android:layout_height="36dp"
                 android:layout_marginStart="5dp"
                 android:background="@drawable/custom_pick_backgroud"
@@ -701,6 +637,61 @@
                 app:layout_constraintEnd_toStartOf="@+id/banpick_imageView_pick6"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/banpick_imageView_pick6" />
+
+            <ImageView
+                android:id="@+id/banpick_imageView_pick8"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="3dp"
+                app:layout_constraintBottom_toTopOf="@id/banpick_imageView_pick9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/banpick_imageView_pick7"
+                app:srcCompat="@drawable/normal_team_logo" />
+
+            <ImageView
+                android:id="@+id/banpick_imageView_pick5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="3dp"
+                app:layout_constraintBottom_toTopOf="@id/banpick_imageView_pick6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/normal_team_logo" />
+
+            <ImageView
+                android:id="@+id/banpick_imageView_pick6"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="3dp"
+                app:layout_constraintBottom_toTopOf="@id/banpick_imageView_pick7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/banpick_imageView_pick5"
+                app:srcCompat="@drawable/normal_team_logo" />
+
+            <ImageView
+                android:id="@+id/banpick_imageView_pick9"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="3dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/banpick_imageView_pick8"
+                app:srcCompat="@drawable/normal_team_logo" />
+
+            <ImageView
+                android:id="@+id/banpick_imageView_pick7"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="3dp"
+                app:layout_constraintBottom_toTopOf="@id/banpick_imageView_pick8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/banpick_imageView_pick6"
+                app:srcCompat="@drawable/normal_team_logo" />
 
             <TextView
                 android:id="@+id/banpick_textView_tear6"
@@ -771,8 +762,8 @@
                 android:id="@+id/banpick_imageView_mostpick51"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginEnd="3dp"
                 app:layout_constraintEnd_toStartOf="@+id/banpick_imageView_mostpick50"
+                app:layout_constraintStart_toEndOf="@id/banpick_imageView_mostpick52"
                 app:layout_constraintTop_toTopOf="@+id/banpick_imageView_mostpick50"
                 app:srcCompat="@drawable/normal_team_logo" />
 
@@ -780,8 +771,8 @@
                 android:id="@+id/banpick_imageView_mostpick70"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginEnd="3dp"
                 app:layout_constraintEnd_toStartOf="@+id/banpick_textView_tear7"
+                app:layout_constraintStart_toEndOf="@id/banpick_imageView_mostpick71"
                 app:layout_constraintTop_toTopOf="@+id/banpick_textView_tear7"
                 app:srcCompat="@drawable/normal_team_logo" />
 
@@ -789,8 +780,8 @@
                 android:id="@+id/banpick_imageView_mostpick52"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginEnd="3dp"
                 app:layout_constraintEnd_toStartOf="@+id/banpick_imageView_mostpick51"
+                app:layout_constraintStart_toStartOf="@+id/banpick_textView_back5"
                 app:layout_constraintTop_toTopOf="@+id/banpick_imageView_mostpick51"
                 app:srcCompat="@drawable/normal_team_logo" />
 
@@ -798,8 +789,8 @@
                 android:id="@+id/banpick_imageView_mostpick90"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginEnd="3dp"
                 app:layout_constraintEnd_toStartOf="@+id/banpick_textView_tear9"
+                app:layout_constraintStart_toEndOf="@id/banpick_imageView_mostpick91"
                 app:layout_constraintTop_toTopOf="@+id/banpick_textView_tear9"
                 app:srcCompat="@drawable/normal_team_logo" />
 
@@ -807,8 +798,8 @@
                 android:id="@+id/banpick_imageView_mostpick91"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginEnd="3dp"
                 app:layout_constraintEnd_toStartOf="@+id/banpick_imageView_mostpick90"
+                app:layout_constraintStart_toEndOf="@id/banpick_imageView_mostpick92"
                 app:layout_constraintTop_toTopOf="@+id/banpick_imageView_mostpick90"
                 app:srcCompat="@drawable/normal_team_logo" />
 
@@ -816,8 +807,8 @@
                 android:id="@+id/banpick_imageView_mostpick50"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginEnd="3dp"
                 app:layout_constraintEnd_toStartOf="@+id/banpick_textView_tear5"
+                app:layout_constraintStart_toEndOf="@id/banpick_imageView_mostpick51"
                 app:layout_constraintTop_toTopOf="@+id/banpick_textView_tear5"
                 app:srcCompat="@drawable/normal_team_logo" />
 
@@ -825,8 +816,8 @@
                 android:id="@+id/banpick_imageView_mostpick92"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginEnd="3dp"
                 app:layout_constraintEnd_toStartOf="@+id/banpick_imageView_mostpick91"
+                app:layout_constraintStart_toStartOf="@+id/banpick_textView_back9"
                 app:layout_constraintTop_toTopOf="@+id/banpick_imageView_mostpick91"
                 app:srcCompat="@drawable/normal_team_logo" />
 
@@ -834,8 +825,8 @@
                 android:id="@+id/banpick_imageView_mostpick82"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginEnd="3dp"
                 app:layout_constraintEnd_toStartOf="@+id/banpick_imageView_mostpick81"
+                app:layout_constraintStart_toStartOf="@+id/banpick_textView_back8"
                 app:layout_constraintTop_toTopOf="@+id/banpick_imageView_mostpick81"
                 app:srcCompat="@drawable/normal_team_logo" />
 
@@ -843,8 +834,8 @@
                 android:id="@+id/banpick_imageView_mostpick60"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginEnd="3dp"
                 app:layout_constraintEnd_toStartOf="@+id/banpick_textView_tear6"
+                app:layout_constraintStart_toEndOf="@id/banpick_imageView_mostpick61"
                 app:layout_constraintTop_toTopOf="@+id/banpick_textView_tear6"
                 app:srcCompat="@drawable/normal_team_logo" />
 
@@ -852,8 +843,8 @@
                 android:id="@+id/banpick_imageView_mostpick81"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginEnd="3dp"
                 app:layout_constraintEnd_toStartOf="@+id/banpick_imageView_mostpick80"
+                app:layout_constraintStart_toEndOf="@id/banpick_imageView_mostpick82"
                 app:layout_constraintTop_toTopOf="@+id/banpick_imageView_mostpick80"
                 app:srcCompat="@drawable/normal_team_logo" />
 
@@ -861,8 +852,8 @@
                 android:id="@+id/banpick_imageView_mostpick71"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginEnd="3dp"
                 app:layout_constraintEnd_toStartOf="@+id/banpick_imageView_mostpick70"
+                app:layout_constraintStart_toEndOf="@id/banpick_imageView_mostpick72"
                 app:layout_constraintTop_toTopOf="@+id/banpick_imageView_mostpick70"
                 app:srcCompat="@drawable/normal_team_logo" />
 
@@ -870,8 +861,8 @@
                 android:id="@+id/banpick_imageView_mostpick61"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginEnd="3dp"
                 app:layout_constraintEnd_toStartOf="@+id/banpick_imageView_mostpick60"
+                app:layout_constraintStart_toEndOf="@id/banpick_imageView_mostpick62"
                 app:layout_constraintTop_toTopOf="@+id/banpick_imageView_mostpick60"
                 app:srcCompat="@drawable/normal_team_logo" />
 
@@ -879,8 +870,8 @@
                 android:id="@+id/banpick_imageView_mostpick72"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginEnd="3dp"
                 app:layout_constraintEnd_toStartOf="@+id/banpick_imageView_mostpick71"
+                app:layout_constraintStart_toStartOf="@+id/banpick_textView_back7"
                 app:layout_constraintTop_toTopOf="@+id/banpick_imageView_mostpick71"
                 app:srcCompat="@drawable/normal_team_logo" />
 
@@ -888,8 +879,8 @@
                 android:id="@+id/banpick_imageView_mostpick80"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginEnd="3dp"
                 app:layout_constraintEnd_toStartOf="@+id/banpick_textView_tear8"
+                app:layout_constraintStart_toEndOf="@id/banpick_imageView_mostpick81"
                 app:layout_constraintTop_toTopOf="@+id/banpick_textView_tear8"
                 app:srcCompat="@drawable/normal_team_logo" />
 
@@ -897,8 +888,8 @@
                 android:id="@+id/banpick_imageView_mostpick62"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_marginEnd="3dp"
                 app:layout_constraintEnd_toStartOf="@+id/banpick_imageView_mostpick61"
+                app:layout_constraintStart_toStartOf="@+id/banpick_textView_back6"
                 app:layout_constraintTop_toTopOf="@+id/banpick_imageView_mostpick61"
                 app:srcCompat="@drawable/normal_team_logo" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -967,8 +958,8 @@
 
             <ImageView
                 android:id="@+id/banpick_imageView_searchicon"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_gravity="center|end"
                 android:layout_marginStart="8dp"
                 app:srcCompat="@drawable/searchicon" />

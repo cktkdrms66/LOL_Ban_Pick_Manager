@@ -1,6 +1,6 @@
 package com.example.lol_ban_pick_manager;
 
-import android.graphics.Bitmap;
+
 
 import java.util.ArrayList;
 
@@ -73,7 +73,8 @@ public class Match  {
 
     public static class Game{
         String name;
-        String victoryTeamLogo;
+        int victoryTeamIndex;
+        int victoryTeamColor; // 0 == blue 1== red 2 == nothing
         int type;// 0 == 플러스,  1 == 그냥 게임
         int star = 0;
         ArrayList<GameElement> gameElements = new ArrayList<>();
@@ -82,13 +83,13 @@ public class Match  {
             //plus
             type = 0;
             name = "";
-            victoryTeamLogo = null;
-
+            victoryTeamIndex = 0;
         }
-        public void setGame(String name, String victoryTeamLogo, int star, ArrayList<GameElement> elements){
+        public void setGame(String name, int victoryTeamIndex, int victoryTeamColor, int star, ArrayList<GameElement> elements){
             type = 1;
             this.name = name;
-            this.victoryTeamLogo = victoryTeamLogo;
+            this.victoryTeamColor = victoryTeamColor;
+            this.victoryTeamIndex = victoryTeamIndex;
             this.star = star;
             for(int i = 0 ; i < elements.size(); i++){
                 this.gameElements.add(elements.get(i));

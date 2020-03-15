@@ -11,20 +11,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="챔피언"
         android:textColor="#000000"
         android:textSize="35dp"
-        app:layout_constraintBottom_toTopOf="@+id/champion_guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/champion_imageView_search2"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:src="@drawable/searchicon"
         app:layout_constraintBottom_toBottomOf="@+id/champion_textView_title"
         app:layout_constraintEnd_toStartOf="@+id/champion_editText"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/champion_textView_title"
         app:layout_constraintTop_toTopOf="@+id/champion_textView_title" />
 
     <ImageView
@@ -32,59 +34,54 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/champion_guideline"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/position_top"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/champion_guideline2"
-        android:src="@drawable/position_top" />
+        app:layout_constraintTop_toBottomOf="@+id/champion_textView_title" />
 
     <ImageView
         android:id="@+id/champion_jg"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/champion_guideline"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/position_jg"
         app:layout_constraintStart_toEndOf="@+id/champion_top"
-        app:layout_constraintTop_toTopOf="@+id/champion_guideline2"
-        android:src="@drawable/position_jg" />
+        app:layout_constraintTop_toTopOf="@+id/champion_top" />
 
     <ImageView
         android:id="@+id/champion_mid"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/champion_guideline"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/position_mid"
         app:layout_constraintStart_toEndOf="@+id/champion_jg"
-        app:layout_constraintTop_toTopOf="@+id/champion_guideline2"
-        android:src="@drawable/position_mid" />
+        app:layout_constraintTop_toTopOf="@+id/champion_jg" />
 
     <ImageView
         android:id="@+id/champion_bot"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/champion_guideline"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/position_bot"
         app:layout_constraintStart_toEndOf="@+id/champion_mid"
-        app:layout_constraintTop_toTopOf="@+id/champion_guideline2"
-        android:src="@drawable/position_bot" />
+        app:layout_constraintTop_toTopOf="@+id/champion_mid" />
 
     <ImageView
         android:id="@+id/champion_sup"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/champion_guideline"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/position_sup"
         app:layout_constraintStart_toEndOf="@+id/champion_bot"
-        app:layout_constraintTop_toTopOf="@+id/champion_guideline2"
-        android:src="@drawable/position_sup" />
+        app:layout_constraintTop_toTopOf="@+id/champion_bot" />
 
     <ImageView
         android:id="@+id/champion_team"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/champion_guideline"
+        android:layout_marginStart="10dp"
         app:layout_constraintStart_toEndOf="@+id/champion_sup"
-        app:layout_constraintTop_toTopOf="@+id/champion_guideline2" />
+        app:layout_constraintTop_toTopOf="@+id/champion_sup" />
 
     <EditText
         android:id="@+id/champion_editText"
@@ -97,26 +94,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/champion_imageView_search2" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/champion_guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/champion_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.16" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/champion_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/champion_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/champion_top"
         tools:layout_editor_absoluteX="0dp">
 
     </androidx.recyclerview.widget.RecyclerView>

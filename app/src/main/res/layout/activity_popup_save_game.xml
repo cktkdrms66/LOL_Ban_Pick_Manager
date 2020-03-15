@@ -12,8 +12,8 @@
 
     <ImageView
         android:id="@+id/save_game_star1"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:src="@drawable/star"
         app:layout_constraintEnd_toStartOf="@id/save_game_star2"
         app:layout_constraintStart_toEndOf="@+id/save_game_star0"
@@ -21,8 +21,8 @@
 
     <ImageView
         android:id="@+id/save_game_star4"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginStart="8dp"
         android:src="@drawable/star"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,8 +41,8 @@
 
     <ImageView
         android:id="@+id/save_game_star2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:src="@drawable/star"
         app:layout_constraintEnd_toStartOf="@id/save_game_star3"
         app:layout_constraintStart_toEndOf="@+id/save_game_star1"
@@ -62,8 +62,8 @@
 
     <ImageView
         android:id="@+id/save_game_star0"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginTop="24dp"
         android:src="@drawable/star"
         app:layout_constraintEnd_toStartOf="@id/save_game_star1"
@@ -72,8 +72,8 @@
 
     <ImageView
         android:id="@+id/save_game_star3"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:src="@drawable/star"
         app:layout_constraintEnd_toStartOf="@id/save_game_star4"
         app:layout_constraintStart_toEndOf="@+id/save_game_star2"

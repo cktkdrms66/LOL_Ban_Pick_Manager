@@ -1,10 +1,9 @@
 package com.example.lol_ban_pick_manager;
 
-import android.app.Activity;
+
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
@@ -19,7 +18,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -170,6 +168,9 @@ public class PopupMakePlayerActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(editText.getText().length() < 2){
                     ApplicationClass.showToast(getApplicationContext(), "이름을 2글자 이상 입력해주세요.");
+                    return;
+                }else if(editText.getText().length() > 10){
+                    ApplicationClass.showToast(getApplicationContext(), "이름을 10글자 이하로 입력해주세요.");
                     return;
                 }
                 for(int i = 0; i < ApplicationClass.players.size(); i++){

@@ -9,7 +9,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_game"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_marginBottom="10dp"
         app:cardBackgroundColor="#FFFFFF"
@@ -19,7 +19,7 @@
             android:id="@+id/cardView_game_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/custom_team_cardview_backgroud">
+            android:background="#FFFFFF">
 
             <TextView
                 android:id="@+id/game_title"
@@ -39,7 +39,7 @@
                 android:id="@+id/game_back"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="28dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/custom_team_cardview_backgroud"
                 app:layout_constraintStart_toStartOf="parent"
@@ -57,12 +57,16 @@
 
             <TextView
                 android:id="@+id/game_textView"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
-                android:text="승리"
-                android:textColor="#2196F3"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:lines="2"
+                android:text="가나다라마사아자차"
+                android:textColor="#000000"
                 android:textSize="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/game_logo"
                 app:layout_constraintStart_toStartOf="@+id/game_logo"
                 app:layout_constraintTop_toBottomOf="@+id/game_logo" />

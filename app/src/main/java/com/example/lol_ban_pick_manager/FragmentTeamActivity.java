@@ -48,6 +48,7 @@ public class FragmentTeamActivity extends Fragment {
 
 
         recyclerView.setHasFixedSize(true);
+        //recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setLayoutManager(new WrapContentLinearLayoutManager(getActivity()));
         adapter = new TeamAdapter(ApplicationClass.teams);
         recyclerView.setAdapter(adapter);

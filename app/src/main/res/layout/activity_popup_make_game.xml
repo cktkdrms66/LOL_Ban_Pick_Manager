@@ -9,6 +9,7 @@
     android:orientation="vertical">
 
     <!-- 타이틀바 -->
+
     <TextView
         android:id="@+id/make_game_textView_title"
         android:layout_width="wrap_content"
@@ -77,7 +78,7 @@
         android:layout_marginTop="16dp"
         android:text="기본팀"
         android:textColor="@color/colorBlueTeam"
-        android:textSize="25dp"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="@+id/make_game_backgroud0"
         app:layout_constraintStart_toStartOf="@+id/make_game_backgroud0"
         app:layout_constraintTop_toBottomOf="@+id/make_game_backgroud0" />
@@ -89,7 +90,7 @@
         android:layout_marginTop="16dp"
         android:text="기본팀"
         android:textColor="@color/colorRedTeam"
-        android:textSize="25dp"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="@+id/make_game_backgroud1"
         app:layout_constraintStart_toStartOf="@+id/make_game_backgroud1"
         app:layout_constraintTop_toBottomOf="@+id/make_game_backgroud1" />
@@ -101,7 +102,7 @@
         android:gravity="center"
         android:text="vs"
         android:textColor="#000000"
-        android:textSize="40dp"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/make_game_team0_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +112,7 @@
         android:id="@+id/make_game_backgroud0"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/custom_team_cardview_backgroud"
         app:layout_constraintEnd_toStartOf="@+id/make_game_vs"
         app:layout_constraintStart_toStartOf="parent"
@@ -153,6 +154,530 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="165dp"
         app:layout_constraintGuide_percent="0.1" />
+
+    <ImageView
+        android:id="@+id/make_match_tear_back0"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toTopOf="@id/make_match_tear_back1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/make_game_textView_team0_name"
+        app:srcCompat="@drawable/circle" />
+
+    <ImageView
+        android:id="@+id/make_match_tear_back5"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@id/make_match_tear_back6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/make_game_textView_team1_name"
+        app:srcCompat="@drawable/circle" />
+
+    <ImageView
+        android:id="@+id/make_match_tear_back6"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toTopOf="@id/make_match_tear_back7"
+        app:layout_constraintEnd_toEndOf="@+id/make_match_tear_back5"
+        app:layout_constraintTop_toBottomOf="@+id/make_match_tear_back5"
+        app:srcCompat="@drawable/circle" />
+
+    <ImageView
+        android:id="@+id/make_match_tear_back7"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toTopOf="@id/make_match_tear_back8"
+        app:layout_constraintEnd_toEndOf="@+id/make_match_tear_back6"
+        app:layout_constraintTop_toBottomOf="@+id/make_match_tear_back6"
+        app:srcCompat="@drawable/circle" />
+
+    <ImageView
+        android:id="@+id/make_match_tear_back8"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toTopOf="@id/make_match_tear_back9"
+        app:layout_constraintEnd_toEndOf="@+id/make_match_tear_back7"
+        app:layout_constraintTop_toBottomOf="@+id/make_match_tear_back7"
+        app:srcCompat="@drawable/circle" />
+
+    <ImageView
+        android:id="@+id/make_match_tear_back9"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/make_match_tear_back8"
+        app:layout_constraintTop_toBottomOf="@id/make_match_tear_back8"
+        app:srcCompat="@drawable/circle" />
+
+    <TextView
+        android:id="@+id/make_match_tear0"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="UN"
+        android:textColor="#FFFFFF"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@+id/make_match_tear_back0"
+        app:layout_constraintEnd_toEndOf="@+id/make_match_tear_back0"
+        app:layout_constraintStart_toStartOf="@+id/make_match_tear_back0"
+        app:layout_constraintTop_toTopOf="@+id/make_match_tear_back0" />
+
+    <TextView
+        android:id="@+id/make_match_tear5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="UN"
+        android:textColor="#FFFFFF"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@+id/make_match_tear_back5"
+        app:layout_constraintEnd_toEndOf="@+id/make_match_tear_back5"
+        app:layout_constraintStart_toStartOf="@+id/make_match_tear_back5"
+        app:layout_constraintTop_toTopOf="@+id/make_match_tear_back5" />
+
+    <TextView
+        android:id="@+id/make_match_tear6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="UN"
+        android:textColor="#FFFFFF"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@+id/make_match_tear_back6"
+        app:layout_constraintEnd_toEndOf="@+id/make_match_tear_back6"
+        app:layout_constraintStart_toStartOf="@+id/make_match_tear_back6"
+        app:layout_constraintTop_toTopOf="@+id/make_match_tear_back6" />
+
+    <TextView
+        android:id="@+id/make_match_tear7"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:text="UN"
+        android:textColor="#FFFFFF"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@+id/make_match_tear_back7"
+        app:layout_constraintEnd_toEndOf="@+id/make_match_tear_back7"
+        app:layout_constraintStart_toStartOf="@+id/make_match_tear_back7"
+        app:layout_constraintTop_toTopOf="@+id/make_match_tear_back7" />
+
+    <TextView
+        android:id="@+id/make_match_tear8"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="UN"
+        android:textColor="#FFFFFF"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@+id/make_match_tear_back8"
+        app:layout_constraintEnd_toEndOf="@+id/make_match_tear_back8"
+        app:layout_constraintStart_toStartOf="@+id/make_match_tear_back8"
+        app:layout_constraintTop_toTopOf="@+id/make_match_tear_back8" />
+
+    <TextView
+        android:id="@+id/make_match_tear9"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="UN"
+        android:textColor="#FFFFFF"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@+id/make_match_tear_back9"
+        app:layout_constraintEnd_toEndOf="@+id/make_match_tear_back9"
+        app:layout_constraintStart_toStartOf="@+id/make_match_tear_back9"
+        app:layout_constraintTop_toTopOf="@+id/make_match_tear_back9" />
+
+    <ImageView
+        android:id="@+id/make_match_most00"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/make_match_tear_back0"
+        app:layout_constraintEnd_toStartOf="@id/make_match_most01"
+        app:layout_constraintStart_toEndOf="@+id/make_match_tear_back0"
+        app:layout_constraintTop_toTopOf="@+id/make_match_tear_back0"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most01"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/make_match_tear_back0"
+        app:layout_constraintEnd_toStartOf="@id/make_match_most02"
+        app:layout_constraintStart_toEndOf="@+id/make_match_most00"
+        app:layout_constraintTop_toTopOf="@+id/make_match_tear_back0"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most02"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toEndOf="@+id/make_match_most01"
+        app:layout_constraintTop_toTopOf="@+id/make_match_most01"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most10"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/make_match_tear_back1"
+        app:layout_constraintEnd_toStartOf="@id/make_match_most11"
+        app:layout_constraintStart_toEndOf="@+id/make_match_tear_back1"
+        app:layout_constraintTop_toTopOf="@+id/make_match_tear_back1"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most11"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@id/make_match_most12"
+        app:layout_constraintStart_toEndOf="@+id/make_match_most10"
+        app:layout_constraintTop_toTopOf="@+id/make_match_most10"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most12"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toEndOf="@+id/make_match_most11"
+        app:layout_constraintTop_toTopOf="@+id/make_match_most11"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most20"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/make_match_tear_back2"
+        app:layout_constraintEnd_toStartOf="@id/make_match_most21"
+        app:layout_constraintStart_toEndOf="@+id/make_match_tear_back2"
+        app:layout_constraintTop_toTopOf="@+id/make_match_tear_back2"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most21"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@id/make_match_most22"
+        app:layout_constraintStart_toEndOf="@+id/make_match_most20"
+        app:layout_constraintTop_toTopOf="@+id/make_match_most20"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most22"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toEndOf="@+id/make_match_most21"
+        app:layout_constraintTop_toTopOf="@+id/make_match_most21"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most30"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/make_match_tear_back3"
+        app:layout_constraintEnd_toStartOf="@id/make_match_most31"
+        app:layout_constraintStart_toEndOf="@+id/make_match_tear_back3"
+        app:layout_constraintTop_toTopOf="@+id/make_match_tear_back3"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most31"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@id/make_match_most32"
+        app:layout_constraintStart_toEndOf="@+id/make_match_most30"
+        app:layout_constraintTop_toTopOf="@+id/make_match_most30"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most32"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toEndOf="@+id/make_match_most31"
+        app:layout_constraintTop_toTopOf="@+id/make_match_most31"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most40"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/make_match_tear_back4"
+        app:layout_constraintEnd_toStartOf="@id/make_match_most41"
+        app:layout_constraintStart_toEndOf="@+id/make_match_tear_back4"
+        app:layout_constraintTop_toTopOf="@+id/make_match_tear_back4"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most41"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@id/make_match_most42"
+        app:layout_constraintStart_toEndOf="@+id/make_match_most40"
+        app:layout_constraintTop_toTopOf="@+id/make_match_most40"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most42"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toEndOf="@+id/make_match_most41"
+        app:layout_constraintTop_toTopOf="@+id/make_match_most41"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most50"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/make_match_tear_back5"
+        app:layout_constraintEnd_toStartOf="@+id/make_match_tear_back5"
+        app:layout_constraintStart_toEndOf="@id/make_match_most51"
+        app:layout_constraintTop_toTopOf="@+id/make_match_tear_back5"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most51"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/make_match_most50"
+        app:layout_constraintStart_toEndOf="@id/make_match_most52"
+        app:layout_constraintTop_toTopOf="@+id/make_match_most50"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most52"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/make_match_most51"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/make_match_most51"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most60"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/make_match_tear_back6"
+        app:layout_constraintEnd_toStartOf="@+id/make_match_tear_back6"
+        app:layout_constraintStart_toEndOf="@id/make_match_most61"
+        app:layout_constraintTop_toTopOf="@+id/make_match_tear_back6"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most61"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/make_match_most60"
+        app:layout_constraintStart_toEndOf="@id/make_match_most62"
+        app:layout_constraintTop_toTopOf="@+id/make_match_most60"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most62"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/make_match_most61"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/make_match_most61"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most70"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/make_match_tear_back7"
+        app:layout_constraintEnd_toStartOf="@+id/make_match_tear_back7"
+        app:layout_constraintStart_toEndOf="@id/make_match_most71"
+        app:layout_constraintTop_toTopOf="@+id/make_match_tear_back7"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most71"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/make_match_most70"
+        app:layout_constraintStart_toEndOf="@id/make_match_most72"
+        app:layout_constraintTop_toTopOf="@+id/make_match_most70"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most72"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/make_match_most71"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/make_match_most71"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most80"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/make_match_tear_back8"
+        app:layout_constraintEnd_toStartOf="@+id/make_match_tear_back8"
+        app:layout_constraintStart_toEndOf="@id/make_match_most81"
+        app:layout_constraintTop_toTopOf="@+id/make_match_tear_back8"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most81"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/make_match_most80"
+        app:layout_constraintStart_toEndOf="@id/make_match_most82"
+        app:layout_constraintTop_toTopOf="@+id/make_match_most80"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most82"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/make_match_most81"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/make_match_most81"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most90"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/make_match_tear_back9"
+        app:layout_constraintEnd_toStartOf="@+id/make_match_tear_back9"
+        app:layout_constraintStart_toEndOf="@id/make_match_most91"
+        app:layout_constraintTop_toTopOf="@+id/make_match_tear_back9"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most91"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/make_match_most90"
+        app:layout_constraintStart_toEndOf="@id/make_match_most92"
+        app:layout_constraintTop_toTopOf="@+id/make_match_most90"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_most92"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/make_match_most91"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/make_match_most91"
+        app:srcCompat="@drawable/randomchampion" />
+
+    <ImageView
+        android:id="@+id/make_match_tear_back1"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toTopOf="@id/make_match_tear_back2"
+        app:layout_constraintStart_toStartOf="@+id/make_match_tear_back0"
+        app:layout_constraintTop_toBottomOf="@+id/make_match_tear_back0"
+        app:srcCompat="@drawable/circle" />
+
+    <ImageView
+        android:id="@+id/make_match_tear_back2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toTopOf="@id/make_match_tear_back3"
+        app:layout_constraintStart_toStartOf="@+id/make_match_tear_back0"
+        app:layout_constraintTop_toBottomOf="@+id/make_match_tear_back1"
+        app:srcCompat="@drawable/circle" />
+
+    <ImageView
+        android:id="@+id/make_match_tear_back3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toTopOf="@id/make_match_tear_back4"
+        app:layout_constraintStart_toStartOf="@+id/make_match_tear_back0"
+        app:layout_constraintTop_toBottomOf="@+id/make_match_tear_back2"
+        app:srcCompat="@drawable/circle" />
+
+    <ImageView
+        android:id="@+id/make_match_tear_back4"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/make_match_tear_back0"
+        app:layout_constraintTop_toBottomOf="@+id/make_match_tear_back3"
+        app:srcCompat="@drawable/circle" />
+
+    <TextView
+        android:id="@+id/make_match_tear1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_marginEnd="40dp"
+        android:gravity="center"
+        android:text="UN"
+        android:textColor="#FFFFFF"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@+id/make_match_tear_back1"
+        app:layout_constraintEnd_toEndOf="@+id/make_match_tear_back1"
+        app:layout_constraintStart_toStartOf="@+id/make_match_tear_back1"
+        app:layout_constraintTop_toTopOf="@+id/make_match_tear_back1" />
+
+    <TextView
+        android:id="@+id/make_match_tear2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="UN"
+        android:textColor="#FFFFFF"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@+id/make_match_tear_back2"
+        app:layout_constraintEnd_toEndOf="@+id/make_match_tear_back2"
+        app:layout_constraintStart_toStartOf="@+id/make_match_tear_back2"
+        app:layout_constraintTop_toTopOf="@+id/make_match_tear_back2" />
+
+    <TextView
+        android:id="@+id/make_match_tear3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="UN"
+        android:textColor="#FFFFFF"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@+id/make_match_tear_back3"
+        app:layout_constraintEnd_toEndOf="@+id/make_match_tear_back3"
+        app:layout_constraintStart_toStartOf="@+id/make_match_tear_back3"
+        app:layout_constraintTop_toTopOf="@+id/make_match_tear_back3" />
+
+    <TextView
+        android:id="@+id/make_match_tear4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="UN"
+        android:textColor="#FFFFFF"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@+id/make_match_tear_back4"
+        app:layout_constraintEnd_toEndOf="@+id/make_match_tear_back4"
+        app:layout_constraintStart_toStartOf="@+id/make_match_tear_back4"
+        app:layout_constraintTop_toTopOf="@+id/make_match_tear_back4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="151dp"
+        app:layout_constraintGuide_percent="0.5" />
 
     <!-- //end 타이틀바 -->
 

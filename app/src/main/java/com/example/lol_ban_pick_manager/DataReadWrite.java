@@ -1,9 +1,9 @@
 package com.example.lol_ban_pick_manager;
 
-import android.animation.Animator;
+
 import android.os.AsyncTask;
 
-import java.util.ArrayList;
+
 
 import io.paperdb.Paper;
 

@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import io.paperdb.Paper;
+
 
 public class FragmentMatchActivity extends Fragment {
     private RecyclerView recyclerView;
@@ -24,21 +24,7 @@ public class FragmentMatchActivity extends Fragment {
 
     static int posIndex;
     MatchAdapter adapter;
-    public class WrapContentLinearLayoutManager extends LinearLayoutManager {
-        public WrapContentLinearLayoutManager(Context context) {
-            super(context);
-        }
 
-        //... constructor
-        @Override
-        public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
-            try {
-                super.onLayoutChildren(recycler, state);
-            } catch (IndexOutOfBoundsException e) {
-
-            }
-        }
-    }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +48,7 @@ public class FragmentMatchActivity extends Fragment {
 
 
         recyclerView.setHasFixedSize(true);
+        //recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setLayoutManager(new WrapContentLinearLayoutManager(getActivity()));
         adapter = new MatchAdapter(ApplicationClass.matches);
         recyclerView.setAdapter(adapter);
@@ -110,5 +97,21 @@ public class FragmentMatchActivity extends Fragment {
         return  view;
     }
 
+    //임시 클래스
+    public class WrapContentLinearLayoutManager extends LinearLayoutManager {
+        public WrapContentLinearLayoutManager(Context context) {
+            super(context);
+        }
+
+        //... constructor
+        @Override
+        public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
+            try {
+                super.onLayoutChildren(recycler, state);
+            } catch (IndexOutOfBoundsException e) {
+
+            }
+        }
+    }
 
 }

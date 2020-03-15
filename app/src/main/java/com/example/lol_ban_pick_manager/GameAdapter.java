@@ -1,7 +1,6 @@
 package com.example.lol_ban_pick_manager;
 
-import android.graphics.PorterDuff;
-import android.provider.ContactsContract;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -93,12 +91,12 @@ public class GameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                             if(mIsClicked.get(pos)){
                                 mIsClicked.set(pos, false);
                                 setOnlyClick(pos, false);
-                                constraintLayout.setBackgroundResource(R.drawable.custom_team_cardview_backgroud);
+                                constraintLayout.setBackgroundColor(0xFFFFFFFF);
 
                             }else{
                                 mIsClicked.set(pos, true);
                                 setOnlyClick(pos, true);
-                                constraintLayout.setBackgroundResource(R.drawable.custom_team_cardview_backgroud_clicked);
+                                constraintLayout.setBackgroundColor(0x69696969);
 
                             }
                         }
@@ -146,13 +144,21 @@ public class GameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
 
         }
+        if(mItems.get(position).victoryTeamIndex == 0){
+            new_holder.textView.setText("설정 안함");
+        }else{
+            new_holder.textView.setText(ApplicationClass.teams.get(mItems.get(position).victoryTeamIndex).name);
+        }
+        if(mItems.get(position).victoryTeamColor == 0){
+            new_holder.textView.setTextColor(0xFF2196F3);
+        }else if(mItems.get(position).victoryTeamColor == 1){
+            new_holder.textView.setTextColor(0xFFF44336);
+        }
+
         new_holder.textView_name.setText(mItems.get(position).name);
 
-        if(mItems.get(position).victoryTeamLogo == null){
-            new_holder.imageView.setImageResource(R.drawable.no);
-        }else{
-            new_holder.imageView.setImageBitmap(ApplicationClass.StringToBitmap(mItems.get(position).victoryTeamLogo));
-        }
+        new_holder.imageView.setImageBitmap(ApplicationClass.StringToBitmap(ApplicationClass.teams.get(mItems.get(position).victoryTeamIndex).logo));
+
         int size = mItems.get(position).star;
         for(int i = 0; i < size; i++){
             new_holder.imageViews[i].setColorFilter(0xFFFFB503);
@@ -160,9 +166,9 @@ public class GameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         if(mItems.get(position).type != 0){
             if(mIsClicked.get(position)){
-                new_holder.constraintLayout.setBackgroundResource(R.drawable.custom_team_cardview_backgroud_clicked);
+                new_holder.constraintLayout.setBackgroundColor(0x69696969);
             }else{
-                new_holder.constraintLayout.setBackgroundResource(R.drawable.custom_team_cardview_backgroud);
+                new_holder.constraintLayout.setBackgroundColor(0xFFFFFFFF);
             }
         }
 

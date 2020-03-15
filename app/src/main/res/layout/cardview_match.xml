@@ -11,14 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_margin="5dp"
-        app:cardBackgroundColor="#FFFFFF"
-        app:cardCornerRadius="3dp">
+        app:cardBackgroundColor="#FFFFFF">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cardView_game_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/custom_team_cardview_backgroud">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/cardView_match_plus"
@@ -64,8 +62,9 @@
 
             <ImageView
                 android:id="@+id/cardView_match_team0"
-                android:layout_width="68dp"
-                android:layout_height="68dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="2dp"
                 app:layout_constraintBottom_toBottomOf="@+id/cardView_match_team0_back"
                 app:layout_constraintEnd_toEndOf="@+id/cardView_match_team0_back"
                 app:layout_constraintStart_toStartOf="@+id/cardView_match_team0_back"
@@ -74,8 +73,9 @@
 
             <ImageView
                 android:id="@+id/cardView_match_team1"
-                android:layout_width="68dp"
-                android:layout_height="68dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="2dp"
                 app:layout_constraintBottom_toBottomOf="@+id/cardView_match_team1_back"
                 app:layout_constraintEnd_toEndOf="@+id/cardView_match_team1_back"
                 app:layout_constraintStart_toStartOf="@+id/cardView_match_team1_back"

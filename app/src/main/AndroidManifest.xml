@@ -11,26 +11,41 @@
         android:theme="@style/AppTheme"
         android:name=".ApplicationClass">
         <meta-data
-
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-
-            android:value="@string/admob_app_id"/>
-        <activity android:name=".BanPickActivity"/>
-        <activity android:name=".PopupMakePlayerActivity" />
-        <activity android:name=".PopupSaveGameActivity" />
-        <activity android:name=".PopupGameActivity" />
-        <activity android:name=".PopupMakeMatchActivity" />
-        <activity android:name=".PopupMakeTeamActivity" />
-        <activity android:name=".SelectChampionActivity"/>
-        <activity android:name=".SelectTeamActivity"/>
-        <activity android:name=".TeamDetailActivity"/>
-        <activity android:name=".PlayerDetailActivity"/>
-        <activity android:name=".SelectPlayerActivity"/>
-        <activity android:name=".MainActivity">
+            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+            android:value="true"/>
+        <activity android:name=".BanPickActivity" ></activity>
+        <activity android:name=".PopupMakePlayerActivity"  android:windowSoftInputMode="adjustNothing"/>
+        <activity android:name=".PopupSaveGameActivity" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:name=".PopupGameActivity">
+            <meta-data
+                android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+                android:value="true"/>
+        </activity>
+        <activity android:name=".PopupMakeMatchActivity" android:windowSoftInputMode="adjustNothing">
+            <meta-data
+                android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+                android:value="true"/>
+        </activity>
+        <activity android:name=".PopupMakeTeamActivity" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:name=".SelectChampionActivity" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:name=".SplashActivity" android:theme="@style/SplashTheme"
+         android:configChanges="orientation|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".SelectTeamActivity" />
+        <activity android:name=".TeamDetailActivity"/>
+        <activity android:name=".PlayerDetailActivity"/>
+        <activity android:name=".SelectPlayerActivity"/>
+        <activity android:name=".MainActivity">
+
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
     </application>
 

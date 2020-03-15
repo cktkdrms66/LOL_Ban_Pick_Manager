@@ -1,7 +1,6 @@
 package com.example.lol_ban_pick_manager;
 
-import android.app.Activity;
-import android.content.Context;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +15,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+
 public class PopupGameActivity extends AppCompatActivity {
 
     TextView textView_title;
@@ -25,11 +28,18 @@ public class PopupGameActivity extends AppCompatActivity {
     ImageView imageView_more;
     static int selectIndex;
 
+    private InterstitialAd mInterstitialAd;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_popup_game);
+
+        MobileAds.initialize(this, "ca-app-pub-9554390275341876/9954370046");
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-9554390275341876/9954370046");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
 
         final Intent intent = getIntent();
@@ -78,6 +88,9 @@ public class PopupGameActivity extends AppCompatActivity {
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent2);
+                if(mInterstitialAd.isLoaded()){
+                    mInterstitialAd.show();
+                }
             }
         });
 
@@ -91,6 +104,9 @@ public class PopupGameActivity extends AppCompatActivity {
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent1);
+                if(mInterstitialAd.isLoaded()){
+                    mInterstitialAd.show();
+                }
             }
         });
 
